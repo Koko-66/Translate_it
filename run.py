@@ -32,21 +32,25 @@ follow the instructions on the screen.
     print(welcome)
 
 
-def print_language_list():
+def create_all_langs_list():
+    """
+    Creates a list with languages and their locales as one string
+    """
     language_list = languages.get_all_values()
     lang_range = len(language_list)
-
     i = 1
+    all_langs_list = []
     for language in language_list:
         while i < lang_range:
-            print(f'{i} - {language_list[i][0]} ({language_list[i][1]})')
+            lang_with_locale = f'{language_list[i][0]} ({language_list[i][1]})'
+            all_langs_list.append(f'{lang_with_locale}')
             i += 1
-    print('\n')
+    return all_langs_list
 
 
 def main():
     print_welcome()
-    print_language_list()
+    print(create_all_langs_list())
 
 
 main()
