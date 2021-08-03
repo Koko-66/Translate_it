@@ -23,6 +23,9 @@ rating = SHEET.worksheet('Rating')
 
 
 def print_welcome():
+    """
+    Prints welcome message with intro to the program.
+    """
     welcome = """\nWelcome to Translate it! - a quick and easy way
 to find a lingusit and have your text translated.
 To start, select the language from the list below
@@ -49,7 +52,7 @@ def create_all_langs_list():
 
 
 def main():
-    print_welcome()
+    print_welcome() 
     print(create_all_langs_list())
 
 
