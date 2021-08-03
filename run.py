@@ -37,7 +37,7 @@ follow the instructions on the screen.
 
 def create_all_langs_list():
     """
-    Creates a list with languages and their locales as one string
+    Creates a list with languages and their locales as one string.
     """
     language_list = languages.get_all_values()
     lang_range = len(language_list)
@@ -51,9 +51,31 @@ def create_all_langs_list():
     return all_langs_list
 
 
+def create_lang_dict():
+    """
+    Creates dictionary with index as key and language with locale as value.
+    """
+    language_list = create_all_langs_list()
+    lang_dict = {}
+    for i in range(0, len(language_list)):
+        lang_dict.update({f'{i}': language_list[i]})
+        i += 1
+    return lang_dict
+
+
+def print_languages():
+    """
+    Prints list of languages for selection.
+    """
+    lang_dict = create_lang_dict()
+    for key, value in lang_dict.items():
+        print(f'{key} - {value}')
+
+
 def main():
-    print_welcome() 
-    print(create_all_langs_list())
+    print_welcome()
+    create_lang_dict()
+    print_languages()
 
 
 main()
