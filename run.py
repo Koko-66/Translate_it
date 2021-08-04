@@ -26,18 +26,17 @@ def print_welcome():
     """
     Prints welcome message with intro to the program.
     """
-    welcome = """\nWelcome to Translate it! - a quick and easy way
-to find a lingusit and have your text translated.
-To start, select the language from the list below
-by choosing the corresponding number and then simply
-follow the instructions on the screen.
-"""
+    welcome = """\nWelcome to Translate it! - a quick and easy way\
+        \nto find a lingusit and have your text translated.\
+        \nTo start, select the language from the list below\
+        \nby choosing the corresponding number and then simply\
+        \nfollow the instructions on the screen.\n"""
     print(welcome)
 
 
 def create_all_langs_list():
     """
-    Creates a list with languages and their locales as one string.
+    Creates a list with language and its locales as one string.
     """
     language_list = languages.get_all_values()
     lang_range = len(language_list)
@@ -57,7 +56,7 @@ def create_lang_dict():
     """
     language_list = create_all_langs_list()
     lang_dict = {}
-    for i in range(0, len(language_list)):
+    for i in range(1, len(language_list)):
         lang_dict.update({f'{i}': language_list[i]})
         i += 1
     return lang_dict
@@ -72,10 +71,31 @@ def print_languages():
         print(f'{key} - {value}')
 
 
+def language_selector():
+    """
+    Get language selection from the user and return for later use.
+    """
+    lang_dict = create_lang_dict()
+    lang_count = len(languages.col_values(1))-2
+
+    while True:
+        try:
+            lang_selection = input(
+                f'\nChoose number from 1 to {lang_count}: ')
+            print(f'\nYour selection: {lang_dict[lang_selection]}\n')
+            break
+        except KeyError:
+            print(f'\nInvalid selection.\
+            \nPlease enter a number from 0 to {lang_count}\n')
+    
+    return lang_selection
+
+
 def main():
     print_welcome()
     create_lang_dict()
     print_languages()
+    language_selector()
 
 
 main()
