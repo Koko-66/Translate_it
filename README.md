@@ -1,45 +1,89 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<!-- ![](my logo?)  -->
 
-Welcome USER_NAME,
+# Translate it!
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+![Responsive Mockup]()
+Translate it! is a translation service engine allowing the user to compare pricing and timings from different lingusits and place an order for translating their file in selected language. The engine 
 
-## Gitpod Reminders
+## Deployed at
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## UX
 
-`python3 -m http.server`
+### User Stories
+1. As a user:
+  - I know what is the purpose of the service and how can follow instructions on how to use it.
+  - I can see the languages available and select the one into which I want to translate my file.
+  - I can copy the text for translation to get the word count.
+  - I can see a list of linguists available in my selected language.
+  - I am given the information how much the translation into my selected language would cost and 
+    how long it would take depending on the linguist.
+  - I can compare different linguists depending on the selection criteria that is most important to me.
+  - I can place an order and receive confirmation that it has been placed. 
+  - I know what process is running in the background.
 
-A blue button should appear to click: *Make Public*,
+## Features and Design
+- Selection from different languages
+- Selection from different linguists
+- Selection of comparison criteria - price, completion time, experience average customer rating and presentation of results.
+   <!-- Solutions for graphs: 
+   1. none and just printing according to the sorting selected by the user 
+   2. one graph opening as a separate HTML page with all criteria (if possible due to data ranges); 
+   3. separate graph for each criteria placed on the same page -->
+- 
 
-Another blue button should appear to click: *Open Browser*.
+### Existing Features
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### Features Left to Implement
 
-A blue button should appear to click: *Make Public*,
+## Technologies Used
 
-Another blue button should appear to click: *Open Browser*.
+### Languages
+- HTML and CSS (provided in Code Institute's template)
+- Python
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Frameworks, Libraries and Programs used
+- VS Code: used as the primary code editor
+- Git: used for version control
+- Git Hub: used to store project files
+- yEd: to create the algorithm for the porgram and it's data model 
+- Google Sheets to store the database of linguists
+- Python Libraries 
+- Heroku: used to deploy the live version of the project
+- [Am I Responsive?](http://ami.responsivedesign.is/#) site to generate the resposivene mockup
 
-## Updates Since The Instructional Video
+## Testing 
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### User Story Testing
+1. As a user:
+  - I know what is the purpose of the service and how can follow instructions on how to use it.
+  - I can see the languages available and select the one into which I want to translate my file.
+  <!-- - I can upload the file for a word count-->
+  - I can see a list of linguists available in my selected language
+  - I am given the information how much the translation into my selected language would cost and how long it would take depending on the linguist.
+  - I can compare different linguists depending on the selection criteria that is most important to me.
+  - I can place an order and receive confirmation that it has been placed.
+  - I know what process is running in the background.
+  
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+### Validator Testing 
+- Run through [Pep 8 online check](http://pep8online.com/) validator
+  
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+<!-- ### Performance Testing -->
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### Bugs and Fixes
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+### Unfixed Bugs
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+## Deployment
+- The program was deployed to Heroku and is available here: The steps to deploy are as follows: 
+ 
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+## Credits 
+<!-- A great thank you to: 
+- My mentor, Caleb, for extremely valuable pointers on how to visualise the movement on the board, make decisions on the best UX approaches and support throughout the whole project. 
+- https://www.geeksforgeeks.org/python-count-number-of-items-in-a-dictionary-value-that-is-a-list/-->
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+### Content
+- css, xterm.css and xterm.js provided with the Code Institute template, orirginally forked from [Fabrice Bellard's javascript vt100 for jslinux](http://bellard.org/jslinux/)
+- 
