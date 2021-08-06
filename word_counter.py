@@ -5,10 +5,21 @@ Takes in users input and calculates word count
 
 print("\nCopy and paste your file here (Cmd+V on Linux/Mac\
     \nor Ctrl+V on Windows). You can paste in multiple texts.\
-    \nOnce you're finished, press Enter and confirm upload with\
-    \nCtrl+d on Linux/Mac or Crtl+z on Windows.")
+    \nOnce you're finished, confirm upload with\
+    \nCtrl+d on Linux/Mac or Crtl+z on Windows.\n")
 
 
+def split_text(func):
+    """
+    Wrapper functiont that splits text string into individual words
+    to prepare for counting.
+    """
+    text = func()
+    text = text.split(' ')
+    return text
+
+
+@split_text
 def get_user_input():
     """
     Gets multiline input from the user and converts it to one string
@@ -26,4 +37,6 @@ def get_user_input():
     return text
 
 
-get_user_input()
+text = get_user_input
+print(text)
+print(len(text))
