@@ -72,6 +72,11 @@ Translate it! is a translation service engine allowing the user to compare prici
 <!-- ### Performance Testing -->
 
 ### Bugs and Fixes
+1. During the development of the word_counter module noticed that pasting text that includes new line causes shell to mistake the new line text as a command rather than part of text.
+__FIXED__ Used method that creates a list with text that is appended to it by line and then converted to string using join() method. Solution found on [Stackoverflow](https://stackoverflow.com/questions/34889012/how-to-paste-multiple-lines-of-text-into-python-input).
+2. word_counter module runs input request before printing instructions, even if this function is called later. Same happens when imported module to the main run.py file, even though no function is called in the module.
+__FIXED__ Removed @split_text decorator and used the function with get_user_input as an argument instead.
+
 
 ### Unfixed Bugs
 
@@ -82,7 +87,9 @@ Translate it! is a translation service engine allowing the user to compare prici
 ## Credits 
 <!-- A great thank you to: 
 - My mentor, Caleb, for extremely valuable pointers on how to visualise the movement on the board, make decisions on the best UX approaches and support throughout the whole project. 
-- https://www.geeksforgeeks.org/python-count-number-of-items-in-a-dictionary-value-that-is-a-list/-->
+- -->
+<!-- - Stackoverflow, its users and their previous posts to help me find solutions to problems I encountered.
+- https://pythonexamples.org/python-split-string-by-regex/ for tips on how to use regex for spliting the content. -->
 
 ### Content
 - css, xterm.css and xterm.js provided with the Code Institute template, orirginally forked from [Fabrice Bellard's javascript vt100 for jslinux](http://bellard.org/jslinux/)
