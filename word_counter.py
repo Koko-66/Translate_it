@@ -26,7 +26,6 @@ def split_text(func):
     return text
 
 
-@split_text
 def get_user_input():
     """
     Gets multiline input from the user and converts it to one string
