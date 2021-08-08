@@ -1,6 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
-
+import word_counter
 """
 Settings from setting up Google sheet are taken from Code Institute walk
 through project "Love Sandwiches"
@@ -26,11 +26,11 @@ def print_welcome():
     """
     Prints welcome message with intro to the program.
     """
-    welcome = """\nWelcome to Translate it! - a quick and easy way\
+    welcome = "\nWelcome to Translate it! - a quick and easy way\
         \nto find a lingusit and have your text translated.\
         \nTo start, select the language from the list below\
         \nby choosing the corresponding number and then simply\
-        \nfollow the instructions on the screen.\n"""
+        \nfollow the instructions on the screen.\n"
     print(welcome)
 
 
@@ -87,7 +87,6 @@ def language_selector():
         except KeyError:
             print(f'\nInvalid selection.\
             \nPlease enter a number from 0 to {lang_count}\n')
-    
     return lang_selection
 
 
@@ -96,6 +95,9 @@ def main():
     create_lang_dict()
     print_languages()
     language_selector()
+    word_counter.print_instructions()
+    input_text = word_counter.split_text(word_counter.get_user_input)
+    print(word_counter.return_word_count(input_text))
 
 
 main()
