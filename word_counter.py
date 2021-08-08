@@ -26,7 +26,6 @@ def split_text(func):
     return text
 
 
-
 @split_text
 def get_user_input():
     """
@@ -44,6 +43,5 @@ def get_user_input():
     return text
 
 
-text = get_user_input
-print(text)
-print(len(text))
+def return_word_count(text):
+    return f'\n\nWord count: {len(text)}\n'
