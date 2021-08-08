@@ -21,8 +21,11 @@ def split_text(func):
     to prepare for counting.
     """
     text = func()
-    text = text.split(' ')
+    text = re.split(r'\s|\n|/', text)
+    text = ' '.join(text).split()  # trims off spaces and empty strings
     return text
+
+
 
 @split_text
 def get_user_input():
