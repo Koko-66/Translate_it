@@ -20,9 +20,11 @@ class Linguist:
         self.rating = rating
 
     def __str__(self):
+        """
+        Returns class instance as string
+        """
         return f"""ID {self.no}: {self.name} - {self.language};
             Experience: {self.experience} years;
             Price: {self.price}/word;
             Words/Day: {self.turnaround};
             Rating: {self.rating}"""
-
