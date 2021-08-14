@@ -67,22 +67,35 @@ def language_selector():
         try:
             lang_selection = input(
                 f'\nChoose number from 1 to {lang_count}: ')
-            print(f'\nYour selection: {lang_dict[lang_selection]}\n')
+            selected_lang = lang_dict[lang_selection]
+            print(f'\nYour selection: {selected_lang}\n')
             break
         except KeyError:
             print(f'\nInvalid selection.\
             \nPlease enter a number from 0 to {lang_count}\n')
-    return lang_selection
+    return selected_lang
+
+
+def return_linguist_row(language):
+    """
+    Return a list of row numbers containing selected language.
+    """
+    cells = linguists.findall(language)
+    cell_list = []
+    for cell in cells:
+        cell_list.append(cell.row)
+    return cell_list
 
 
 def main():
     print_welcome()
     create_lang_dict()
     print_languages()
-    language_selector()
+    selected_lang = language_selector()
     word_counter.print_instructions()
     input_text = word_counter.split_text(word_counter.get_user_input)
     print(word_counter.return_word_count(input_text))
+    print(return_linguist_row(selected_lang))
 
 
 main()
