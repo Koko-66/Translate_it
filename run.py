@@ -1,6 +1,8 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import word_counter
+import linguist_selector
+# import pprint
 """
 Settings from setting up Google sheet are taken from Code Institute walk
 through project "Love Sandwiches"
@@ -76,15 +78,25 @@ def language_selector():
     return selected_lang
 
 
-def return_linguist_row(language):
+def return_linguists(language):
     """
     Return a list of row numbers containing selected language.
     """
     cells = linguists.findall(language)
-    cell_list = []
+    rows = []
     for cell in cells:
-        cell_list.append(cell.row)
-    return cell_list
+        rows.append(cell.row)
+    listings = {}
+    for row in rows:
+        listing = linguists.row_values(row)
+        linguist = linguist_selector.Linguist(
+            listing[0], f'{listing[1]} {listing[2]}',
+            listing[3], listing[4], listing[5],
+            listing[6], listing[7])
+        linguist = linguist.__str__()
+        listings.update({f'{row-1}': linguist})
+    print(rows)
+    return listings.values()
 
 
 def main():
@@ -95,7 +107,7 @@ def main():
     word_counter.print_instructions()
     input_text = word_counter.split_text(word_counter.get_user_input)
     print(word_counter.return_word_count(input_text))
-    print(return_linguist_row(selected_lang))
+    print(return_linguists(selected_lang))
 
 
 main()
