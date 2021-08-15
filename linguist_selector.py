@@ -23,8 +23,9 @@ class Linguist:
         """
         Returns class instance as string
         """
-        return f"""ID {self.no}: {self.name} - {self.language};
-            Experience: {self.experience} years;
-            Price: {self.price}/word;
-            Words/Day: {self.turnaround};
-            Rating: {self.rating}"""
+        return ' |$| '.join((f"ID {self.no}: {self.name} - {self.language}",
+                             f"Experience: {self.experience} years",
+                             f"Price: {self.price}/word",
+                             f"Words/Day: {self.turnaround}",
+                             f"Rating: {self.rating}",))
+

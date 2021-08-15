@@ -95,8 +95,12 @@ def return_linguists(language):
             listing[6], listing[7])
         linguist = linguist.__str__()
         listings.update({f'{row-1}': linguist})
-    print(rows)
-    return listings.values()
+    return listings
+
+
+def print_linguists(listings):
+    for value in listings:
+        print(f"{listings[value]}")
 
 
 def main():
@@ -107,7 +111,7 @@ def main():
     word_counter.print_instructions()
     input_text = word_counter.split_text(word_counter.get_user_input)
     print(word_counter.return_word_count(input_text))
-    print(return_linguists(selected_lang))
+    print_linguists(return_linguists(selected_lang))
 
 
 main()
