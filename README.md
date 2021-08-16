@@ -11,18 +11,18 @@ Translate it! is a translation service engine allowing the user to compare prici
 
 ### User Stories
 1. As a user:
-  - I know what is the purpose of the service and how can follow instructions on how to use it.
+  - I know what is the purpose of the service and can follow instructions on how to use it.
   - I can see the languages available and select the one into which I want to translate my file.
   - I can copy the text for translation to get the word count.
   - I can see a list of linguists available in my selected language.
-  - I am given the information how much the translation into my selected language would cost and 
+  - I am given the information about how much the translation into my selected language would cost and 
     how long it would take depending on the linguist.
   - I can compare different linguists depending on the selection criteria that is most important to me.
   - I can place an order and receive confirmation that it has been placed. 
   - I know what process is running in the background.
 
 ## Features and Design
-- Selection from different languages
+- Selection from different languages. During the development changed the representation of the language in the Google Sheet database to be in one cell rather than separate. Considering the size of the database and the list of available languages, this seemed a more efficient solution.
 - Selection from different linguists
 - Selection of comparison criteria - price, completion time, experience average customer rating and presentation of results.
    <!-- Solutions for graphs: 
@@ -72,11 +72,11 @@ Translate it! is a translation service engine allowing the user to compare prici
 <!-- ### Performance Testing -->
 
 ### Bugs and Fixes
-1. During the development of the word_counter module noticed that pasting text that includes new line causes shell to mistake the new line text as a command rather than part of text.
-__FIXED__ Used method that creates a list with text that is appended to it by line and then converted to string using join() method. Solution found on [Stackoverflow](https://stackoverflow.com/questions/34889012/how-to-paste-multiple-lines-of-text-into-python-input).
+1. In word_counter module copy/pasting text that contains new line causes shell to interpret the new line text as a new command rather than part of text, breatking the program.
+__FIXED__ Used method that creates a list to which pasted text is appended line by line, and then converted to a string using join() method. Solution found on [Stackoverflow](https://stackoverflow.com/questions/34889012/how-to-paste-multiple-lines-of-text-into-python-input). This also allows the user to input mutliple texts.
 2. word_counter module runs input request before printing instructions, even if this function is called later. Same happens when imported module to the main run.py file, even though no function is called in the module.
 __FIXED__ Removed @split_text decorator and used the function with get_user_input as an argument instead.
-
+3.  
 
 ### Unfixed Bugs
 

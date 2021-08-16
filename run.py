@@ -96,9 +96,12 @@ def return_linguists(language):
         linguist = linguist.__str__()
         listings.update({f'{row-1}': linguist})
     return listings
-
+ 
 
 def print_linguists(listings):
+    """
+    Print linguists matching the language selected by the user.
+    """
     for value in listings:
         print(f"{listings[value]}")
 
