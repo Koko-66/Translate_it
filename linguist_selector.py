@@ -1,8 +1,8 @@
-
 """
 Create Linguist class.
 Print linguist list according to selection criteria.
 """
+
 
 class Linguist:
     """
@@ -28,19 +28,10 @@ class Linguist:
                              f"Words/Day: {self.turnaround}",
                              f"Rating: {self.rating}",))
 
-    # def to calculate price for file
     def calculate_total_price(self, word_count):
         """
         Calculate total price per linguist.
         """
-        total_price = word_count * self.price
-        return total_price
+        total_price = round(word_count * self.price, 2)
+        return f"Total price: ${total_price}"
 
-    # def to calculate turnaround time
-    
-
-
-koko = Linguist(2, 'koko', 'Polish', 3, 0.06, 300, 2)
-
-pricing = round(koko.calculate_total_price(234), 2)
-print(pricing)
