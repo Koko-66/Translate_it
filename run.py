@@ -2,7 +2,6 @@ import gspread
 from google.oauth2.service_account import Credentials
 import word_counter
 import linguist_selector
-import operator
 # import pprint
 """
 Settings from setting up Google sheet are taken from Code Institute walk
@@ -94,19 +93,8 @@ def return_linguists(language):
             listing[0], f'{listing[1]} {listing[2]}',
             listing[3], listing[4], listing[5],
             listing[6], listing[7])
-        # linguist = linguist.__str__()
         listings.append(linguist)
-    # listings.sort(key=operator.attrgetter('rating'))
     return listings
-
-
-def sort_by_criterium(listings, criterium):
-    """
-    Sort the list of objects returned earlier by selected criterium.
-    """
-    # Code taken from:
-    # https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333
-    listings.sort(key=operator.attrgetter(f'{criterium}'))
 
 
 def print_linguists(listings):
@@ -127,6 +115,7 @@ def main():
     input_text = word_counter.split_text(word_counter.get_user_input)
     print(word_counter.return_word_count(input_text))
     print_linguists(return_linguists(selected_lang))
+    linguist_selector.select_sort_criteria()
 
 
 main()

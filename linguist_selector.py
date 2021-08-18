@@ -1,4 +1,5 @@
 import math
+import operator
 """
 Create Linguist class.
 Print linguist list according to selection criteria.
@@ -63,9 +64,44 @@ class Linguist:
 {full_days} days and {turnaround_hours} hours."
 
 
+def sort_by_criterium(listings, criterium):
+    """
+    Sort the list of objects returned earlier by selected criterium.
+    """
+    # Code taken from:
+    # https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333
+    listings.sort(key=operator.attrgetter(f'{criterium}'))
+
+
+def select_sort_criteria():
+    """
+    Select criteria for sorting
+    """
+    criteria = {'1': 'price', '2': 'turnaround', '3': 'experience',
+                '4': 'rating'}
+    print("You can choose to sort the listed linguists by:\n")
+    for criterium in criteria:
+        print(f"{criterium} - {criteria[criterium]}")
+    print("\nPlease make your selection by choosing the relevant number")
+    print("If you do not wish to sort the listings, select 0.\n")
+    while True:
+        try:
+            criterium_selection = input(
+                '\nChoose number from 0 to 4: ')
+            selected_crtierium = criteria[criterium_selection]
+            print(f'\nYour selection: {selected_crtierium}\n')
+            break
+        except KeyError:
+            print('\nInvalid selection.\
+             \nPlease enter a number from 0 to 4\n')
+    return selected_crtierium
+
+
 koko = Linguist(2, 'koko', 'Polish', 3, 0.06, 1300, 2)
 
-pricing = koko.calculate_total_price(834)
-print(pricing)
-turnaround = koko.calculate_turnaround_time(1516)
-print(turnaround)
+# pricing = koko.calculate_total_price(834)
+# print(pricing)
+# turnaround = koko.calculate_turnaround_time(1516)
+# print(turnaround)
+
+# select_sort_criteria()
