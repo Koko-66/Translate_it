@@ -70,7 +70,8 @@ def sort_by_criterium(listings, criterium):
     """
     # Code taken from:
     # https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333
-    listings.sort(key=operator.attrgetter(f'{criterium}'))
+    listings = listings.sort(key=operator.attrgetter(criterium))
+    return listings
 
 
 def select_sort_criteria():
@@ -88,13 +89,13 @@ def select_sort_criteria():
         try:
             criterium_selection = input(
                 '\nChoose number from 0 to 4: ')
-            selected_crtierium = criteria[criterium_selection]
-            print(f'\nYour selection: {selected_crtierium}\n')
+            selected_criterium = criteria[criterium_selection]
+            print(f'\nYour selection: {selected_criterium}\n')
             break
         except KeyError:
             print('\nInvalid selection.\
              \nPlease enter a number from 0 to 4\n')
-    return selected_crtierium
+    return selected_criterium
 
 
 koko = Linguist(2, 'koko', 'Polish', 3, 0.06, 1300, 2)

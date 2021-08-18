@@ -103,10 +103,13 @@ def print_linguists(listings):
     """
     for value in listings:
         value = value.__str__()
-        print({value})
+        print(value)
 
 
 def main():
+    """
+    Run program functions
+    """
     print_welcome()
     create_lang_dict()
     print_languages()
@@ -114,8 +117,12 @@ def main():
     word_counter.print_instructions()
     input_text = word_counter.split_text(word_counter.get_user_input)
     print(word_counter.return_word_count(input_text))
-    print_linguists(return_linguists(selected_lang))
-    linguist_selector.select_sort_criteria()
+    listings = return_linguists(selected_lang)
+    print(listings)
+    criterium = linguist_selector.select_sort_criteria()
+    print(criterium)
+    linguist_selector.sort_by_criterium(listings, criterium)
+    print_linguists(listings)
 
 
 main()
