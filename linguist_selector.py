@@ -69,18 +69,21 @@ def sort_by_criterium(listings, criterium):
     """
     Sort the list of objects returned earlier by selected criterium.
     """
-    # Code taken from:
-    # https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333
-    listings = listings.sort(key=operator.attrgetter(criterium))
-    return listings
+    if criterium != 'none':
+        # Code taken from:
+        # https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333
+        listings = listings.sort(key=operator.attrgetter(criterium))
+        return listings
+    else:
+        pass
 
 
 def select_sort_criteria():
     """
     Select criteria for sorting
     """
-    criteria = {'1': 'price', '2': 'turnaround', '3': 'experience',
-                '4': 'rating'}
+    criteria = {'0': 'none', '1': 'price', '2': 'turnaround',
+                '3': 'experience', '4': 'rating'}
     print("You can choose to sort the listed linguists by:\n")
     for criterium in criteria:
         print(f"{criterium} - {criteria[criterium]}")
