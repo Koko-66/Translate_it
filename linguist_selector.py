@@ -26,11 +26,12 @@ class Linguist:
         """
         Returns class instance as string
         """
-        return ' |$| '.join((f"ID {self.no}: {self.name} - {self.language}",
-                             f"Experience: {self.experience} years",
-                             f"Price: {self.price}/word",
-                             f"Words/Day: {self.turnaround}",
-                             f"Rating: {self.rating}",))
+        return ' ** '.join((f"ID {self.no}: {self.name} - {self.language}",
+                            f"\n{' '*7}Experience: {self.experience} years",
+                            f"Rating: {self.rating}",
+                            f"\n{' '*7}Price: {self.price}/word",
+                            f"Words/Day: {self.turnaround}\n"
+                            f"{'_'*50}\n"))
 
     def calculate_total_price(self, word_count):
         """
