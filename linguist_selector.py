@@ -37,14 +37,14 @@ class Linguist:
         """
         Calculate total price per linguist.
         """
-        total_price = round(word_count * self.price, 2)
-        return f"${total_price}"
+        total_price = round(word_count * float(self.price), 2)
+        return total_price
 
     def calculate_turnaround_time(self, word_count):
         """
         Calculate time needed to translate the text
         """
-        words_per_hour = round(self.turnaround/WORKING_HOURS_DAY)
+        words_per_hour = round(float(self.turnaround)/WORKING_HOURS_DAY)
         turnaround_hours = round(word_count/words_per_hour)
         if turnaround_hours < 6:
             if turnaround_hours == 1 or word_count < words_per_hour:
@@ -74,7 +74,7 @@ class Linguist:
                           f"Translator: {self.name}",
                           f"Language: {self.language}",
                           f"Word count: {word_count}",
-                          f"Total price: {total_price}",
+                          f"Total price: ${total_price}",
                           f"Turnaround time: ca {turnaround_time}\n"))
 
 
@@ -107,7 +107,7 @@ def select_sort_criteria():
             criterium_selection = input(
                 'Choose number from 0 to 4: ')
             selected_criterium = criteria[criterium_selection]
-            print(f'Your selection: {selected_criterium}\n')
+            print(f'Sorted by {selected_criterium}\n')
             break
         except KeyError:
             print('\nInvalid selection.\
@@ -115,6 +115,6 @@ def select_sort_criteria():
     return selected_criterium
 
 
-linguist = Linguist('1', 'Koko', 'Polish', 7, 0.06, 1500, 7)
+# linguist = Linguist('1', 'Koko', 'Polish', 7, 0.06, 1500, 7)
 # print(linguist)
-print(linguist.generate_quote(4956))
+# print(linguist.generate_quote(4956))

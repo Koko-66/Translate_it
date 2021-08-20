@@ -102,8 +102,25 @@ def print_linguists(listings):
     Print linguists matching the language selected by the user.
     """
     for value in listings:
-        value = value.__str__()
-        print(value)
+        print(f'{listings.index(value)} - {value.__str__()}')
+
+
+def select_linguist(listings):
+    """
+    Select linguist from the listed options
+    """
+    counter = len(listings)
+    while True:
+        try:
+            linguist_selection = int(input(
+                "\nTo choose the linguist select their number.\n"))
+            selected_linguist = listings[linguist_selection]
+            print(f'\nYour selection: {selected_linguist.name}\n')
+            return selected_linguist
+            break
+        except IndexError:
+            print(f'\nInvalid selection.\
+            \nPlease enter a number from 0 to {counter-1}\n')
 
 
 def main():
@@ -116,13 +133,13 @@ def main():
     selected_lang = language_selector()
     word_counter.print_instructions()
     input_text = word_counter.split_text(word_counter.get_user_input)
-    print(word_counter.return_word_count(input_text))
+    word_count = word_counter.return_word_count(input_text)
     listings = return_linguists(selected_lang)
-    print(listings)
     criterium = linguist_selector.select_sort_criteria()
-    print(criterium)
     linguist_selector.sort_by_criterium(listings, criterium)
     print_linguists(listings)
+    selected_linguist = select_linguist(listings)
+    print(selected_linguist.generate_quote(word_count))
 
 
 main()
