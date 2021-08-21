@@ -76,7 +76,16 @@ Translate it! is a translation service engine allowing the user to compare prici
 __FIXED__ Used method that creates a list to which pasted text is appended line by line, and then converted to a string using join() method. Solution found on [Stackoverflow](https://stackoverflow.com/questions/34889012/how-to-paste-multiple-lines-of-text-into-python-input). This also allows the user to input mutliple texts.
 2. word_counter module runs input request before printing instructions, even if this function is called later. Same happens when imported module to the main run.py file, even though no function is called in the module.
 __FIXED__ Removed @split_text decorator and used the function with get_user_input as an argument instead.
-3.  
+3. Creating Linguist instance from Google Sheet data in the linguist_selector.py required importing sheet data from the main run.py module, causing circular import issues. 
+__FIXED__ Moved the function to the main module (run.py).
+4. The creation of the linguists listing and sorting required some consideration and testing different methods on how best to approach this. 
+__FIXED__ Adjusted the function to return a list of objects instead of a dictionary, thus allowing the use of operand.getattribute to sort returned lists.
+5. Initial idea of creating a dictonary with row number as key and the object returned as string caused issues applying the sorting method. In the sorting function, when sorted list assigned to another variable returned None object.
+__FIXED__ Adjusted sort_by_criterium function to reassign the sorted list to the same variable as that passed in the function.
+6. sort_by_criteria function returns exception when selecting 0.
+__FIXED__ Added 0 to the criteria dictionary and if statement to the sorting function to pass when no sorting is selected.
+7. Printing quotation after selection of the linguist throws an error due to incorrect data types. 
+__FIXED__ Converted class attributes to floats in functions calculating total price and turnaround time and changed return_word_count function in word_counter module to return word_count rather than a string. 
 
 ### Unfixed Bugs
 
@@ -89,7 +98,9 @@ __FIXED__ Removed @split_text decorator and used the function with get_user_inpu
 - My mentor, Caleb, for extremely valuable pointers on how to visualise the movement on the board, make decisions on the best UX approaches and support throughout the whole project. 
 - -->
 <!-- - Stackoverflow, its users and their previous posts to help me find solutions to problems I encountered.
-- https://pythonexamples.org/python-split-string-by-regex/ for tips on how to use regex for spliting the content. -->
+- https://pythonexamples.org/python-split-string-by-regex/ for tips on how to use regex for spliting the content.
+- https://www.w3schools.com for tips on usage of various in-built functions and methods.
+- https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333: for solution on how to sort the linguists listings according to specific attribute and https://docs.python.org/3/library/operator.html for information on how to apply it-->
 
 ### Content
 - css, xterm.css and xterm.js provided with the Code Institute template, orirginally forked from [Fabrice Bellard's javascript vt100 for jslinux](http://bellard.org/jslinux/)
