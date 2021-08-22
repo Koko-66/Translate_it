@@ -42,7 +42,8 @@ class Linguist:
 
     def calculate_turnaround_time(self, word_count):
         """
-        Calculate time needed to translate the text
+        Calculate time needed to translate the text.
+        Minimum turnaround time is one hour.
         """
         words_per_hour = round(float(self.turnaround)/WORKING_HOURS_DAY)
         turnaround_hours = round(word_count/words_per_hour)
@@ -115,6 +116,27 @@ def select_sort_criteria():
     return selected_criterium
 
 
-# linguist = Linguist('1', 'Koko', 'Polish', 7, 0.06, 1500, 7)
-# print(linguist)
-# print(linguist.generate_quote(4956))
+def print_linguists(listings):
+    """
+    Print linguists matching the language selected by the user.
+    """
+    for value in listings:
+        print(f'{listings.index(value)+1} - {value.__str__()}')
+
+
+def select_linguist(listings):
+    """
+    Select linguist from the listed options
+    """
+    counter = len(listings)
+    while True:
+        try:
+            linguist_selection = int(input(
+                "\nTo choose the linguist select their number.\n"))
+            selected_linguist = listings[linguist_selection-1]
+            print(f'\nYour selection: {selected_linguist.name}\n')
+            return selected_linguist
+        except (IndexError, ValueError):
+            print(f'\nInvalid selection.\
+            \nPlease enter a number from 1 to {counter}\n')
+
