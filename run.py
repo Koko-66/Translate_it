@@ -59,6 +59,9 @@ def print_languages():
 
 
 def confirm_selection(func):
+    """
+    Ask user to confirm their selection.
+    """
     confirmed = ''
     while confirmed.lower() != 'y':
         confirmed = input("Confirm selection - Y/N\n").lower()
