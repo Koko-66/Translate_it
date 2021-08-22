@@ -60,7 +60,7 @@ def print_languages():
 
 def confirm_selection(func):
     """
-    Ask user to confirm their selection.
+    Ask user to confirm their selection and reruns the function.
     """
     confirmed = ''
     while confirmed.lower() != 'y':
@@ -134,8 +134,7 @@ def select_linguist(listings):
             selected_linguist = listings[linguist_selection]
             print(f'\nYour selection: {selected_linguist.name}\n')
             return selected_linguist
-            break
-        except IndexError:
+        except (IndexError, ValueError):
             print(f'\nInvalid selection.\
             \nPlease enter a number from 0 to {counter-1}\n')
 
