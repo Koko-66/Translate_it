@@ -58,6 +58,20 @@ def print_languages():
         print(f'{key} - {value}')
 
 
+def confirm_selection(func):
+    confirmed = ''
+    while confirmed.lower() != 'y':
+        confirmed = input("Confirm selection - Y/N\n").lower()
+        if confirmed.lower() == 'n':
+            print("Previous selection cancelled. Select again.")
+            func()
+        elif confirmed.lower() == 'y':
+            print("Selection confirmed.")
+            break
+        else:
+            print("Invalid entry. Please type 'Y' for 'yes' or 'N' for no.")
+
+
 def language_selector():
     """
     Get language selection from the user and return for later use.
@@ -131,6 +145,7 @@ def main():
     create_lang_dict()
     print_languages()
     selected_lang = language_selector()
+    confirm_selection(language_selector)
     word_counter.print_instructions()
     input_text = word_counter.split_text(word_counter.get_user_input)
     word_count = word_counter.return_word_count(input_text)
