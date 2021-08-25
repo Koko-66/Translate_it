@@ -98,7 +98,7 @@ def select_sort_criteria():
     """
     criteria = {'0': 'none', '1': 'price', '2': 'turnaround',
                 '3': 'experience', '4': 'rating'}
-    print("You can choose to sort the listed linguists by:\n")
+    print("You can sort the listed linguists by:\n")
     for criterium in criteria:
         print(f"{criterium} - {criteria[criterium]}")
     print("\nPlease make your selection by choosing the relevant number")
@@ -106,9 +106,9 @@ def select_sort_criteria():
     while True:
         try:
             criterium_selection = input(
-                'Choose number from 0 to 4: ')
+                'Choose number from 0 to 4: \n')
             selected_criterium = criteria[criterium_selection]
-            print(f'Sorted by {selected_criterium}\n')
+            print(f'Linguists sorted by: {selected_criterium.capitalize()}\n')
             break
         except KeyError:
             print('\nInvalid selection.\
@@ -139,4 +139,3 @@ def select_linguist(listings):
         except (IndexError, ValueError):
             print(f'\nInvalid selection.\
             \nPlease enter a number from 1 to {counter}\n')
-

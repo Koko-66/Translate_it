@@ -20,7 +20,7 @@ SHEET = GSPREAD_CLIENT.open('Linguists_database')
 
 linguists = SHEET.worksheet('Linguists')
 languages = SHEET.worksheet('Languages')
-client_data = SHEET.worksheet('Client_data')
+order_data = SHEET.worksheet('Order_data')
 rating = SHEET.worksheet('Rating')
 
 
@@ -60,16 +60,16 @@ def print_languages():
 
 def confirm_selection(func):
     """
-    Ask user to confirm their selection and reruns the function.
+    Ask user to confirm their selection and reruns the function passed.
     """
     confirmed = ''
     while confirmed.lower() != 'y':
-        confirmed = input("Confirm selection - Y/N\n").lower()
+        confirmed = input("Confirm selection? Y/N\n").lower()
         if confirmed.lower() == 'n':
-            print("Previous selection cancelled. Select again.")
+            print("\nPrevious selection cancelled. Try again.\n")
             func()
         elif confirmed.lower() == 'y':
-            print("Selection confirmed.")
+            print("\nSelection confirmed.\n")
             break
         else:
             print("Invalid entry. Please type 'Y' for 'yes' or 'N' for no.")
@@ -133,6 +133,7 @@ def main():
     selected_linguist = linguist_selector.select_linguist(listings)
     # selected_linguist = confirm_selection(select_linguist(listings))
     print(selected_linguist.generate_quote(word_count))
+    confirm_selection(selected_linguist.generate_quote(word_count))
 
 
 main()

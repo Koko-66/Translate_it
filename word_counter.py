@@ -43,6 +43,7 @@ def get_user_input():
 
 
 def return_word_count(text):
+    print("Counting...")
     word_count = len(text)
-    print(f'\n\nWord count: {word_count}\n')
+    print(f"\n\nWord count: {word_count}\n")
     return word_count
