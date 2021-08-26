@@ -1,5 +1,6 @@
 import math
 import operator
+
 """
 Create Linguist class.
 Print linguist list according to selection criteria.
@@ -70,7 +71,7 @@ class Linguist:
         """
         total_price = self.calculate_total_price(word_count)
         turnaround_time = self.calculate_turnaround_time(word_count)
-        return '\n'.join(("Your quote: ",
+        return '\n'.join(("\nYour quote: ",
                           f"{'-'*40}",
                           f"Translator: {self.name}",
                           f"Language: {self.language}",
@@ -83,7 +84,7 @@ def sort_by_criterium(listings, criterium):
     """
     Sort the list of objects returned earlier by selected criterium.
     """
-    if criterium != 'none':
+    if criterium != '0':
         # Code taken from:
         # https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333
         listings = listings.sort(key=operator.attrgetter(criterium))
@@ -96,20 +97,24 @@ def select_sort_criteria():
     """
     Select criteria for sorting
     """
-    criteria = {'0': 'none', '1': 'price', '2': 'turnaround',
+    criteria = {'1': 'price', '2': 'turnaround',
                 '3': 'experience', '4': 'rating'}
     print("You can sort the listed linguists by:\n")
     for criterium in criteria:
         print(f"{criterium} - {criteria[criterium]}")
-    print("\nPlease make your selection by choosing the relevant number")
-    print("If you do not wish to sort the listings, select 0.\n")
+    print("\nTo choose sorting criteria, type their number.")
+    print("Select 0 to print without sorting.\n")
     while True:
         try:
             criterium_selection = input(
                 'Choose number from 0 to 4: \n')
-            selected_criterium = criteria[criterium_selection]
-            print(f'Linguists sorted by: {selected_criterium.capitalize()}\n')
-            break
+            if criterium_selection != '0':
+                selected_criterium = criteria[criterium_selection]
+                print(f'Linguists sorted by: {selected_criterium.upper()}\n')
+                break
+            else:
+                selected_criterium = '0'
+                break
         except KeyError:
             print('\nInvalid selection.\
              \nPlease enter a number from 0 to 4\n')
@@ -134,7 +139,7 @@ def select_linguist(listings):
             linguist_selection = int(input(
                 "\nTo choose the linguist select their number.\n"))
             selected_linguist = listings[linguist_selection-1]
-            print(f'\nYour selection: {selected_linguist.name}\n')
+            # print(f'\nYour selection: {selected_linguist.name}\n')
             return selected_linguist
         except (IndexError, ValueError):
             print(f'\nInvalid selection.\
