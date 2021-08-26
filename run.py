@@ -72,7 +72,7 @@ def confirm_selection(func):
             print("\nSelection confirmed.\n")
             break
         else:
-            print("Invalid entry. Please type 'Y' for 'yes' or 'N' for no.")
+            print("Invalid entry. Please type 'Y' or 'N'.")
 
 
 def language_selector():
@@ -114,6 +114,36 @@ def return_linguists(language):
     return listings
 
 
+def confirm_order(listings):
+    order_confirmed = ""
+    selection = ""
+    while order_confirmed.lower() != 'y':
+        order_confirmed = input("Confirm order? Y/N\n").lower()
+        if order_confirmed.lower() == 'n':
+            options = {"1": "Go back to linguist selection",
+                       "2": "Exit program"}
+            print("\nOrder cancelled. What do you want to do?\n")
+            while True:
+                selection = input(
+                    f"1 - {options.get('1')} or 2 - {options.get('2')}")
+                if selection == "1":
+                    # print("select linguist")
+                    linguist_selector.print_linguists(listings)
+                    linguist_selector.select_linguist(listings)
+                    break
+                elif selection == "2":
+                    # print("run again")
+                    main()
+                    break
+                else:
+                    print("Invalid selection. Type 1 or 2`\n")
+        elif order_confirmed.lower() == 'y' or order_confirmed.lower() == 'n':
+            print("Order confirmed")
+            break
+        else:
+            print("Invalid input. Type in 'Y' or 'N'.\n")
+
+
 def main():
     """
     Run program functions
@@ -131,9 +161,9 @@ def main():
     linguist_selector.sort_by_criterium(listings, criterium)
     linguist_selector.print_linguists(listings)
     selected_linguist = linguist_selector.select_linguist(listings)
-    # selected_linguist = confirm_selection(select_linguist(listings))
+    confirm_selection(linguist_selector.select_linguist)
     print(selected_linguist.generate_quote(word_count))
-    confirm_selection(selected_linguist.generate_quote(word_count))
+    confirm_order(listings)
 
 
 main()
