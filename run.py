@@ -114,7 +114,7 @@ def return_linguists(language):
     return listings
 
 
-def confirm_order(listings):
+def confirm_order(listings, word_count):
     order_confirmed = ""
     selection = ""
     while order_confirmed.lower() != 'y':
@@ -127,12 +127,13 @@ def confirm_order(listings):
                 selection = input(
                     f"1 - {options.get('1')} or 2 - {options.get('2')}")
                 if selection == "1":
-                    # print("select linguist")
+
                     linguist_selector.print_linguists(listings)
-                    linguist_selector.select_linguist(listings)
+                    selected_linguist = linguist_selector.select_linguist(
+                        listings)
+                    print(selected_linguist.generate_quote(word_count))
                     break
                 elif selection == "2":
-                    # print("run again")
                     main()
                     break
                 else:
@@ -161,9 +162,8 @@ def main():
     linguist_selector.sort_by_criterium(listings, criterium)
     linguist_selector.print_linguists(listings)
     selected_linguist = linguist_selector.select_linguist(listings)
-    confirm_selection(linguist_selector.select_linguist)
     print(selected_linguist.generate_quote(word_count))
-    confirm_order(listings)
+    confirm_order(listings, word_count)
 
 
 main()
