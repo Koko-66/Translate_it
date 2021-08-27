@@ -2,7 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import word_counter
 import linguist_selector
-# import pprint
+
 """
 Settings from setting up Google sheet are taken from Code Institute walk
 through project "Love Sandwiches"
@@ -121,23 +121,23 @@ def confirm_order(listings, word_count):
         order_confirmed = input("Confirm order? Y/N\n").lower()
         if order_confirmed.lower() == 'n':
             options = {"1": "Go back to linguist selection",
-                       "2": "Exit program"}
+                       "2": "Exit program\n"}
             print("\nOrder cancelled. What do you want to do?\n")
             while True:
                 selection = input(
                     f"1 - {options.get('1')} or 2 - {options.get('2')}")
                 if selection == "1":
-
                     linguist_selector.print_linguists(listings)
                     selected_linguist = linguist_selector.select_linguist(
                         listings)
                     print(selected_linguist.generate_quote(word_count))
                     break
                 elif selection == "2":
+                    print('Exiting program...')
                     main()
                     break
                 else:
-                    print("Invalid selection. Type 1 or 2`\n")
+                    print("Invalid selection. Type 1 or 2.\n")
         elif order_confirmed.lower() == 'y' or order_confirmed.lower() == 'n':
             print("Order confirmed")
             break
@@ -160,7 +160,7 @@ def main():
     listings = return_linguists(selected_lang)
     criterium = linguist_selector.select_sort_criteria()
     linguist_selector.sort_by_criterium(listings, criterium)
-    linguist_selector.print_linguists(listings)
+    linguist_selector.print_linguists(listings, word_count)
     selected_linguist = linguist_selector.select_linguist(listings)
     print(selected_linguist.generate_quote(word_count))
     confirm_order(listings, word_count)

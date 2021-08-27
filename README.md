@@ -56,6 +56,7 @@ Translate it! is a translation service engine allowing the user to compare prici
 ### User Story Testing
 1. As a user:
   - I know what is the purpose of the service and how can follow instructions on how to use it.
+    <!-- * Tested on a couple of family members to check if instructions and introduction to the program are clear.  -->
   - I can see the languages available and select the one into which I want to translate my file.
   <!-- - I can upload the file for a word count-->
   - I can see a list of linguists available in my selected language
@@ -86,8 +87,18 @@ __FIXED__ Adjusted sort_by_criterium function to reassign the sorted list to the
 __FIXED__ Added 0 to the criteria dictionary and if statement to the sorting function to pass when no sorting is selected.
 7. Printing quotation after selection of the linguist throws an error due to incorrect data types. 
 __FIXED__ Converted class attributes to floats in functions calculating total price and turnaround time and changed return_word_count function in word_counter module to return word_count rather than a string. 
+8. The select_linguist function does not account for input that is not an integer and raises an ValueError. 
+__FIXED__ Add ValueError to exception handling within the function.
+9. Sorting of the lingusits' listings is from lower to higher, since all criteria are treated the same way. 
+
+10. When confirmin the order the confirm order function asks for confirming the order twice.
+
+11. Removing sorting criteria '0 - none' from the dictionary to prevent it from printing, causes an exeption (Invalid input) to be raised when user input is '0', since it is no loger a dictionary key.
+__FIXED__ Added if statement to the function to handle case with '0' as input separately and adjusted sort_by_criterium function to reflect the new input value.
 
 ### Unfixed Bugs
+1. Confirm selection function when used for linguist selection raises a TypeError: 'Linguist' object is not callable. Need to change the object the function returns.
+2. Ctrl
 
 ## Deployment
 - The program was deployed to Heroku and is available here: The steps to deploy are as follows: 
@@ -97,10 +108,12 @@ __FIXED__ Converted class attributes to floats in functions calculating total pr
 <!-- A great thank you to: 
 - My mentor, Caleb, for extremely valuable pointers on how to visualise the movement on the board, make decisions on the best UX approaches and support throughout the whole project. 
 - -->
-<!-- - Stackoverflow, its users and their previous posts to help me find solutions to problems I encountered.
+- 
+<!-- - Stackoverflow, its users and their previous posts to help me find solutions to problems I encountered. Specifically: 
+https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333: for solution on how to sort the linguists listings according to specific attribute and https://docs.python.org/3/library/operator.html for information on how to apply it
 - https://pythonexamples.org/python-split-string-by-regex/ for tips on how to use regex for spliting the content.
 - https://www.w3schools.com for tips on usage of various in-built functions and methods.
-- https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333: for solution on how to sort the linguists listings according to specific attribute and https://docs.python.org/3/library/operator.html for information on how to apply it-->
+- -->
 
 ### Content
 - css, xterm.css and xterm.js provided with the Code Institute template, orirginally forked from [Fabrice Bellard's javascript vt100 for jslinux](http://bellard.org/jslinux/)

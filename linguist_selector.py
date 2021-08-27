@@ -23,22 +23,27 @@ class Linguist:
         self.turnaround = turnaround
         self.rating = rating
 
-    def __str__(self):
+    def __str__(self, word_count):
         """
-        Returns class instance as string
+        Returns linguist listing as string
         """
+        total_price = self.calculate_total_price(word_count)
+        turnaround_time = self.calculate_turnaround_time(word_count)
         return ' ** '.join((f"ID {self.no}: {self.name} - {self.language}",
                             f"\n{' '*7}Experience: {self.experience} years",
                             f"Rating: {self.rating}",
-                            f"\n{' '*7}Price: {self.price}/word",
-                            f"Words/Day: {self.turnaround}\n"
+                            f"\n\n{' '*7}Price/word: {self.price}",
+                            f"Total: ${total_price}",
+                            # f"Words/Day: {self.turnaround}"
+                            # f"Word count: {word_count}",
+                            f"\n{' '*7}Turnaround time: ca {turnaround_time}",
                             f"{'_'*50}\n"))
 
     def calculate_total_price(self, word_count):
         """
         Calculate total price per linguist.
         """
-        total_price = round(word_count * float(self.price), 2)
+        total_price = round(word_count * float(self.price), 3)
         return total_price
 
     def calculate_turnaround_time(self, word_count):
@@ -75,7 +80,7 @@ class Linguist:
                           f"{'-'*40}",
                           f"Translator: {self.name}",
                           f"Language: {self.language}",
-                          f"Word count: {word_count}",
+                          #   f"Word count: {word_count}",
                           f"Total price: ${total_price}",
                           f"Turnaround time: ca {turnaround_time}\n"))
 
@@ -121,12 +126,12 @@ def select_sort_criteria():
     return selected_criterium
 
 
-def print_linguists(listings):
+def print_linguists(listings, word_count):
     """
     Print linguists matching the language selected by the user.
     """
     for value in listings:
-        print(f'{listings.index(value)+1} - {value.__str__()}')
+        print(f'{listings.index(value)+1} - {value.__str__(word_count)}')
 
 
 def select_linguist(listings):
