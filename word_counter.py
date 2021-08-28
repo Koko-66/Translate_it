@@ -17,7 +17,7 @@ def print_instructions():
 
 def split_text(func):
     """
-    Wrapper functiont that splits text string into individual words
+    Wrapper function that splits text string into individual words
     to prepare for counting.
     """
     text = func()
@@ -47,3 +47,18 @@ def return_word_count(text):
     word_count = len(text)
     print(f"\n\nWord count: {word_count}\n")
     return word_count
+
+
+def run_word_count():
+    print_instructions()
+    while True:
+        text = split_text(get_user_input)
+        word_count = return_word_count(text)
+        if word_count == 0:
+            print("Word count cannot be 0.")
+            print("Please provide text to translate.")
+        else:
+            return word_count
+
+
+# run_word_count()
