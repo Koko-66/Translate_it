@@ -28,22 +28,3 @@ class Order:
         self.date = date.today()
         self.total_value = total_value
         self.delivery_date = delivery_date
-
-    def __str__(self):
-        """
-        Returns order class instance as string
-        """
-        return '\n'.join(("\nThank you for your oder! Your order details.",
-                          f"{'-'*35}",
-                          f"Order number: {self.number}",
-                          f"Order date: {self.date}",
-                          f"Order total: ${self.total_value}",
-                          f"{'-'*35}",
-                          "Payment details\n",
-                          "Please make a payment via PayPal to: payments@translateit.com\
-                          \nin the next 24 hours.",
-                          f"Your order should be on {self.delivery_date}"))
-
-
-order = Order(45.00, '23/03/2021')
-print(str(order))
