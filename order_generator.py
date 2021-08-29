@@ -1,60 +1,49 @@
-import itertools
-from datetime import date
-import linguist_selector
 """
 Create customer and order class.
 Print order and send details to the customer
 """
 
-class Customer:
-    """
-    Creates customer class.
-    """
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-
-class Order:
-    """
-    Creates order class.
-    """
-    # Adding numbers dynamically taken from:
-    # https://stackoverflow.com/questions/1045344/how-do-you-create-an-incremental-id-in-a-python-class
-    number_iter = itertools.count()
-
-    def __init__(self, total_value, turnaround_time):
-        instances = []
-        self.number = next(self.number_iter)
-        self.date = date.today()
-        self.total_value = total_value
-        self.turnaround_time = turnaround_time
-        instances.append(self)
-
-    def __str__(self):
-        """
-        Returns order class instance as string
-        """
-        return '\n'.join(("\nThank you for your oder! Your order details.",
-                          f"{'-'*35}",
-                          f"Order number: {self.number}",
-                          f"Order date: {self.date}",
-                          f"Order total: ${self.total_value}",
-                          f"{'-'*35}",
-                          "Payment details:",
-                          "Please make a payment via PayPal to",
-                          "payments@translateit.com\n",
-                          "Translation should be ready around",
-                          f"{self.turnaround_time} after we confirm \
-your order."))
+from classes.customer import Customer
+from classes.order import Order
+import linguist_selector
 
 
-def create_order(Linguist, word_count):
+def confirm_order(listings, word_count):
+    order_confirmed = ""
+    selection = ""
+    while order_confirmed.lower() != 'y':
+        order_confirmed = input("Confirm order? Y/N\n").lower()
+        if order_confirmed.lower() == 'n':
+            options = {"1": "Go back to linguist selection",
+                       "2": "Exit program\n"}
+            print("\nOrder cancelled. What do you want to do?\n")
+            while True:
+                selection = input(
+                    f"1 - {options.get('1')} or 2 - {options.get('2')}")
+                if selection == "1":
+                    linguist_selector.print_linguists(listings, word_count)
+                    selected_linguist = linguist_selector.select_linguist(
+                        listings)
+                    print(selected_linguist.generate_quote(word_count))
+                    break
+                elif selection == "2":
+                    print('Exiting program...')
+                    quit()
+                else:
+                    print("Invalid selection. Type 1 or 2.\n")
+        elif order_confirmed.lower() == 'y' or order_confirmed.lower() == 'n':
+            print("Order confirmed")
+            break
+        else:
+            print("Invalid input. Type in 'Y' or 'N'.\n")
+
+
+def create_order(linguist, word_count):
     """
     Creates order instance
     """
-    total_value = linguist_selector.Linguist.calculate_total_price(
-        Linguist, word_count)
-    turnaround_time = Linguist.calculate_turnaround_time(word_count)
+    total_value = linguist.calculate_total_price(word_count)
+    turnaround_time = linguist.calculate_turnaround_time(word_count)
     order = Order(total_value, turnaround_time)
     print(str(order))
     return order
@@ -71,7 +60,7 @@ def get_customer_data():
     return customer
 
 
-def push_order_to_database(Order, worksheet, language, word_count, Customer):
-    data = [Order.number, str(Order.date), language, word_count,
-            Order.total_value, Customer.name, Customer.email]
+def push_order_to_database(order, worksheet, language, word_count, customer):
+    data = [order.number, str(order.date), language, word_count,
+            order.total_value, customer.name, customer.email]
     worksheet.append_row(data)
