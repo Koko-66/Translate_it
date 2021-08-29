@@ -1,5 +1,5 @@
 """
-Creates Linguist class.
+Sorts linguis
 Prints linguist list according to selection criteria.
 """
 import operator
@@ -18,7 +18,7 @@ def sort_by_criterium(listings, criterium):
         pass
 
 
-def select_sort_criteria():
+def select_sort_criteria(listings, word_count):
     """
     Select criteria for sorting
     """
@@ -28,7 +28,7 @@ def select_sort_criteria():
     for criterium in criteria:
         print(f"{criterium} - {criteria[criterium]}")
     print("\nTo choose sorting criteria, type their number.")
-    print("Select 0 to print without sorting.\n")
+    print("Type 0 to move on without sorting.\n")
     while True:
         try:
             criterium_selection = input(
@@ -36,7 +36,7 @@ def select_sort_criteria():
             if criterium_selection != '0':
                 selected_criterium = criteria[criterium_selection]
                 print(f'Linguists sorted by: {selected_criterium.upper()}\n')
-                # print selection again
+                print_linguists(listings, word_count)
                 break
             else:
                 selected_criterium = '0'
