@@ -1,5 +1,6 @@
 import itertools
 from datetime import date
+import linguist_selector
 """
 Create customer and order class.
 Print order and send details to the customer
@@ -45,3 +46,15 @@ class Order:
                           "Translation should be ready around",
                           f"{self.turnaround_time} after we confirm \
 your order."))
+
+
+def create_order(Linguist, word_count):
+    """
+    Creates order instance
+    """
+    total_value = linguist_selector.Linguist.calculate_total_price(
+        Linguist, word_count)
+    turnaround_time = Linguist.calculate_turnaround_time(word_count)
+    order = Order(total_value, turnaround_time)
+    print(str(order))
+    return order

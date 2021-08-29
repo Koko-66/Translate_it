@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import word_counter
 import linguist_selector
+import order_generator
 
 """
 Settings from setting up Google sheet are taken from Code Institute walk
@@ -164,6 +165,7 @@ def main():
     selected_linguist = linguist_selector.select_linguist(listings)
     print(selected_linguist.generate_quote(word_count))
     confirm_order(listings, word_count)
-
+    order = order_generator.create_order(
+        selected_linguist, word_count)
 
 main()
