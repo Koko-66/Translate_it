@@ -110,7 +110,7 @@ def return_linguists(language):
         listing = linguists.row_values(row)
         linguist = Linguist(
             listing[0], f'{listing[1]} {listing[2]}',
-            listing[3], listing[4], listing[5],
+            listing[3], int(listing[4]), listing[5],
             listing[6], listing[7])
         listings.append(linguist)
     return listings
@@ -128,8 +128,9 @@ def main():
     word_count = word_counter.run_word_count()
     listings = return_linguists(selected_lang)
     linguist_selector.print_linguists(listings, word_count)
-    criterium = linguist_selector.select_sort_criteria(listings, word_count)
+    criterium = linguist_selector.select_sort_criteria()
     linguist_selector.sort_by_criterium(listings, criterium)
+    linguist_selector.return_sorted_linguists(listings, word_count, criterium)
     selected_linguist = linguist_selector.select_linguist(listings)
     print(selected_linguist.generate_quote(word_count))
     order_generator.confirm_order(listings, word_count)

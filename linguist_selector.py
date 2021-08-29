@@ -10,15 +10,19 @@ def sort_by_criterium(listings, criterium):
     Sort the list of objects returned earlier by selected criterium.
     """
     if criterium != '0':
-        # Code taken from:
-        # https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333
-        listings = listings.sort(key=operator.attrgetter(criterium))
+        if criterium == 'price' or criterium == "turnaround":
+            # Code taken from:
+            # https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333
+            listings = listings.sort(key=operator.attrgetter(criterium))
+        else:
+            listings = listings.sort(key=operator.attrgetter(criterium),
+                                     reverse=True)
         return listings
     else:
         pass
 
 
-def select_sort_criteria(listings, word_count):
+def select_sort_criteria():
     """
     Select criteria for sorting
     """
@@ -36,7 +40,6 @@ def select_sort_criteria(listings, word_count):
             if criterium_selection != '0':
                 selected_criterium = criteria[criterium_selection]
                 print(f'Linguists sorted by: {selected_criterium.upper()}\n')
-                print_linguists(listings, word_count)
                 break
             else:
                 selected_criterium = '0'
@@ -53,6 +56,11 @@ def print_linguists(listings, word_count):
     """
     for value in listings:
         print(f'{listings.index(value)+1} - {value.__str__(word_count)}')
+
+
+def return_sorted_linguists(listings, word_count, criterium):
+    if criterium != '0':
+        print_linguists(listings, word_count)
 
 
 def select_linguist(listings):
