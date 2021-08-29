@@ -59,6 +59,3 @@ def run_word_count():
             print("Please provide text to translate.")
         else:
             return word_count
-
-
-# run_word_count()
