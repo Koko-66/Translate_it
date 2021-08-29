@@ -23,11 +23,11 @@ class Order:
     # https://stackoverflow.com/questions/1045344/how-do-you-create-an-incremental-id-in-a-python-class
     number_iter = itertools.count()
 
-    def __init__(self, total_value, delivery_date):
+    def __init__(self, total_value, turnaround_time):
         self.number = next(self.number_iter)
         self.date = date.today()
         self.total_value = total_value
-        self.delivery_date = delivery_date
+        self.turnaround_time = turnaround_time
 
     def __str__(self):
         """
@@ -39,7 +39,9 @@ class Order:
                           f"Order date: {self.date}",
                           f"Order total: ${self.total_value}",
                           f"{'-'*35}",
-                          "Payment details\n",
-                          "Please make a payment via PayPal to: payments@translateit.com\
-                          \nin the next 24 hours.",
-                          f"Your order should be on {self.delivery_date}"))
+                          "Payment details:",
+                          "Please make a payment via PayPal to",
+                          "payments@translateit.com\n",
+                          "Translation should be ready around",
+                          f"{self.turnaround_time} after we confirm \
+your order."))
