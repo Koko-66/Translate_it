@@ -134,8 +134,9 @@ def main():
     selected_linguist = linguist_selector.select_linguist(listings)
     print(selected_linguist.generate_quote(word_count))
     order_generator.confirm_order(listings, word_count)
-    order = order_generator.create_order(
-        selected_linguist, word_count, )
+    order_number = int(order_data.col_values(1)[-1]) + 1
+    order = order_generator.create_order(order_number,
+                                         selected_linguist, word_count)
     customer = order_generator.get_customer_data()
     order_generator.push_order_to_database(order, order_data,
                                            selected_lang, word_count, customer)

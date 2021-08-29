@@ -38,13 +38,13 @@ def confirm_order(listings, word_count):
             print("Invalid input. Type in 'Y' or 'N'.\n")
 
 
-def create_order(linguist, word_count):
+def create_order(number, linguist, word_count):
     """
     Creates order instance
     """
     total_value = linguist.calculate_total_price(word_count)
     turnaround_time = linguist.calculate_turnaround_time(word_count)
-    order = Order(total_value, turnaround_time)
+    order = Order(number, total_value, turnaround_time)
     print(str(order))
     return order
 
