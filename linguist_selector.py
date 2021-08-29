@@ -2,8 +2,8 @@ import math
 import operator
 
 """
-Create Linguist class.
-Print linguist list according to selection criteria.
+Creates Linguist class.
+Prints linguist list according to selection criteria.
 """
 
 WORKING_HOURS_DAY = 6
@@ -55,7 +55,7 @@ class Linguist:
         turnaround_hours = round(word_count/words_per_hour)
         if turnaround_hours < 6:
             if turnaround_hours == 1 or word_count < words_per_hour:
-                return "1 hour."
+                return "1 hour"
             else:
                 return f"{turnaround_hours} hours."
         else:
@@ -66,9 +66,9 @@ class Linguist:
                 return "1 day."
             else:
                 if turnaround_hours == 0:
-                    return f"{turnaround_days} day(s)."
+                    return f"{turnaround_days} day(s)"
                 else:
-                    return f"{full_days} days and {turnaround_hours} hours."
+                    return f"{full_days} days and {turnaround_hours} hours"
 
     def generate_quote(self, word_count):
         """
