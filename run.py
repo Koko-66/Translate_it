@@ -167,5 +167,9 @@ def main():
     confirm_order(listings, word_count)
     order = order_generator.create_order(
         selected_linguist, word_count)
+    customer = order_generator.get_customer_data()
+    order_generator.push_order_to_database(order, order_data,
+                                           selected_lang, word_count, customer)
+
 
 main()

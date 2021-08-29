@@ -6,7 +6,6 @@ Create customer and order class.
 Print order and send details to the customer
 """
 
-
 class Customer:
     """
     Creates customer class.
@@ -14,7 +13,6 @@ class Customer:
     def __init__(self, name, email):
         self.name = name
         self.email = email
-
 
 class Order:
     """
@@ -25,10 +23,12 @@ class Order:
     number_iter = itertools.count()
 
     def __init__(self, total_value, turnaround_time):
+        instances = []
         self.number = next(self.number_iter)
         self.date = date.today()
         self.total_value = total_value
         self.turnaround_time = turnaround_time
+        instances.append(self)
 
     def __str__(self):
         """
@@ -58,3 +58,20 @@ def create_order(Linguist, word_count):
     order = Order(total_value, turnaround_time)
     print(str(order))
     return order
+
+
+def get_customer_data():
+    """
+    Get customer name and email.
+    """
+    print("Please provide your details.")
+    name = input("\nYour name: ")
+    email = input("\nYour e-mail address: ")
+    customer = Customer(name, email)
+    return customer
+
+
+def push_order_to_database(Order, worksheet, language, word_count, Customer):
+    data = [Order.number, str(Order.date), language, word_count,
+            Order.total_value, Customer.name, Customer.email]
+    worksheet.append_row(data)
