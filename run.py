@@ -134,8 +134,7 @@ def confirm_order(listings, word_count):
                     break
                 elif selection == "2":
                     print('Exiting program...')
-                    main()
-                    break
+                    quit()
                 else:
                     print("Invalid selection. Type 1 or 2.\n")
         elif order_confirmed.lower() == 'y' or order_confirmed.lower() == 'n':
