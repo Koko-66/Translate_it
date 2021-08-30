@@ -1,7 +1,7 @@
-import re
 """
 Takes in pasted text as input and calculates word count
 """
+import re
 
 
 def print_instructions():

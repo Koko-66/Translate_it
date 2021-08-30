@@ -145,7 +145,7 @@ def main():
     linguist_selector.print_linguists(listings, word_count)
     criterium = linguist_selector.select_sort_criteria()
     linguist_selector.sort_by_criterium(listings, criterium)
-    linguist_selector.return_sorted_linguists(listings, word_count, criterium)
+    linguist_selector.print_sorted_linguists(listings, word_count, criterium)
     selected_linguist = linguist_selector.select_linguist(listings)
     print(selected_linguist.generate_quote(word_count))
     order_generator.confirm_order(listings, word_count)

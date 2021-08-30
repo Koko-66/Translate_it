@@ -1,6 +1,6 @@
 """
-Sorts linguis
-Prints linguist list according to selection criteria.
+Select criteria for sorting linguists and sort their listings.
+Print linguist list according to selection and then sorting criteria.
 """
 import operator
 
@@ -58,7 +58,11 @@ def print_linguists(listings, word_count):
         print(f'{listings.index(value)+1} - {value.__str__(word_count)}')
 
 
-def return_sorted_linguists(listings, word_count, criterium):
+def print_sorted_linguists(listings, word_count, criterium):
+    """
+    Prints lingusits after they've been sorted only if sorting
+    criteria is selected.
+    """
     if criterium != '0':
         print_linguists(listings, word_count)
 
