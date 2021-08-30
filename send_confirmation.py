@@ -18,6 +18,7 @@ def send_email_confimation(order_number, customer, message):
         yag.send(to=customer,
                  subject=f"Order {order_number} - confirmation",
                  contents=message)
-        print("Email sent successfully")
+        print("\nEmail sent.")
     except EOFError:
-        print("Error, email was not sent")
+        print("Error, email was not sent. Please bear with us while investigate \
+the issue.")
