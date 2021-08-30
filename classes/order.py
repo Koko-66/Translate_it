@@ -1,5 +1,4 @@
 from datetime import date
-import itertools
 
 
 class Order:
@@ -8,7 +7,6 @@ class Order:
     """
     # Adding numbers dynamically taken from:
     # https://stackoverflow.com/questions/1045344/how-do-you-create-an-incremental-id-in-a-python-class
-    number_iter = itertools.count()
 
     def __init__(self, number, total_value, turnaround_time):
         self.number = number
