@@ -42,15 +42,28 @@ class Linguist:
         total_price = round(word_count * float(self.price), 3)
         return total_price
 
+    def turnaround_time_as_float(self, word_count):
+        """
+        Calculate time needed to translate the text and return it as a float.
+        Minimum turnaround time is one hour.
+        """
+        words_per_hour = round(float(self.turnaround)/WORKING_HOURS_DAY)
+        turnaround_hours = round(word_count/words_per_hour)
+        if word_count < words_per_hour:
+            return 1
+        else:
+            return turnaround_hours
+
     def calculate_turnaround_time(self, word_count):
         """
         Calculate time needed to translate the text.
         Minimum turnaround time is one hour.
         """
-        words_per_hour = round(float(self.turnaround)/WORKING_HOURS_DAY)
-        turnaround_hours = round(word_count/words_per_hour)
+        turnaround_hours = self.turnaround_time_as_float(word_count)
+        # words_per_hour = round(float(self.turnaround)/WORKING_HOURS_DAY)
+        # turnaround_hours = round(word_count/words_per_hour)
         if turnaround_hours < 6:
-            if turnaround_hours == 1 or word_count < words_per_hour:
+            if turnaround_hours == 1:
                 return "1 hour"
             else:
                 return f"{turnaround_hours} hours."
@@ -64,7 +77,7 @@ class Linguist:
                 if turnaround_hours == 0:
                     return f"{turnaround_days} day(s)"
                 else:
-                    return f"{full_days} days and {turnaround_hours} hours"
+                    return f"{full_days} day(s) and {turnaround_hours} hours"
 
     def generate_quote(self, word_count):
         """

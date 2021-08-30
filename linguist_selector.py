@@ -10,7 +10,7 @@ def sort_by_criterium(listings, criterium):
     Sort the list of objects returned earlier by selected criterium.
     """
     if criterium != '0':
-        if criterium == 'price' or criterium == "turnaround":
+        if criterium == 'price':
             # Code taken from:
             # https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333
             listings = listings.sort(key=operator.attrgetter(criterium))
