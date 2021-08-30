@@ -74,23 +74,24 @@ def push_order_to_database(order, worksheet, language, word_count, customer):
     worksheet.append_row(data)
 
 
-def create_order_confrimation_message(order, language, word_count, linguist):
+def create_order_confrimation_message(customer, order, language,
+                                      word_count, linguist):
     turnaround_time = linguist.calculate_turnaround_time(word_count)
-    message = "\n".join(("Here are your order details:",
+    message = "\n".join((f"Thank you for your order, {customer.name}",
+                         "Here are your order details:",
                          f"{'-'*35}",
                          f"<strong>Order number</strong>: {order.number}",
                          f"<strong>Order date</strong>: {order.date}",
-                         f"</strong>Language</strong>: {language}",
-                         f"</strong>Word count</strong>: {word_count}",
-                         f"</strong>Linguist</strong>: {linguist.name}",
-                         "</strong>Order total</strong>: "
+                         f"<strong>Language</strong>: {language}",
+                         f"<strong>Word count</strong>: {word_count}",
+                         f"<strong>Linguist</strong>: {linguist.name}",
+                         "<strong>Order total</strong>: "
                          f"${order.total_value}\n",
                          f"{'-'*35}",
-                         "</strong>Payment details</strong>:",
+                         "<strong>Payment details</strong>:",
                          "Please make a payment via PayPal to",
                          "payments@translateit.com\n",
                          "Translation should be ready around "
                          f"<strong>{turnaround_time}</strong> "
-                         "after we confirm your order.",
-                         "\nThank you for your oder!"))
+                         "after we confirm your order."))
     return message
