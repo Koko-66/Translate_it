@@ -6,6 +6,7 @@ Print order and send details to the customer
 from classes.customer import Customer
 from classes.order import Order
 import linguist_selector
+import re
 
 
 def confirm_order(listings, word_count):
@@ -60,7 +61,17 @@ def get_customer_data():
     """
     print("Please provide your details.")
     name = input("\nYour name: ")
-    email = input("\nYour e-mail address: ")
+    # regex and code in the if statement taken from:
+    # https://www.geeksforgeeks.org/check-if-email-address-valid-or-not-in-python/
+    regex = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
+    while True:
+        email = input("\nYour e-mail address: \n")
+        if re.fullmatch(regex, email):
+            print("\nThank you! You will receive your \
+email confirmation shortly.")
+            break
+        else:
+            print("\nInvalid e-mail, try again.\n")
     customer = Customer(name, email)
     return customer
 
