@@ -118,6 +118,19 @@ def return_linguists(language):
     return listings
 
 
+def generate_order_number():
+    """
+    Generate order number based on the last entry in the order worksheet of the
+    database. If none present, sets order number to 101.
+    """
+    try:
+        order_number = int(order_data.col_values(1)[-1]) + 1
+    except ValueError:
+        pass
+        order_number = 101
+    return order_number
+
+
 def main():
     """
     Run program functions
@@ -136,7 +149,7 @@ def main():
     selected_linguist = linguist_selector.select_linguist(listings)
     print(selected_linguist.generate_quote(word_count))
     order_generator.confirm_order(listings, word_count)
-    order_number = int(order_data.col_values(1)[-1]) + 1
+    order_number = generate_order_number()
     order = order_generator.create_order(
         order_number, selected_linguist, word_count)
     customer = order_generator.get_customer_data()
