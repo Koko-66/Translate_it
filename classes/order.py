@@ -20,15 +20,9 @@ class Order:
         """
         Returns order class instance as string
         """
-        return '\n'.join(("\nThank you for your oder! Your order details.",
+        return '\n'.join(("\nThank you. Order details:",
                           f"{'-'*35}",
                           f"Order number: {self.number}",
                           f"Order date: {self.date}",
                           f"Order total: ${self.total_value}",
-                          f"{'-'*35}",
-                          "Payment details:",
-                          "Please make a payment via PayPal to",
-                          "payments@translateit.com\n",
-                          "Translation should be ready around",
-                          f"{self.turnaround_time} after we confirm "
-                          "your order."))
+                          f"{'-'*35}"))
