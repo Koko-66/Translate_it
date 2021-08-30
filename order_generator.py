@@ -9,6 +9,11 @@ import linguist_selector
 
 
 def confirm_order(listings, word_count):
+    """
+    Ask the user to confirm order, checking for valid input ('y' or 'n').
+    - If yes, break loop and move to next function.
+    - If no, go back to selection of lingusist or exit the program.
+    """
     order_confirmed = ""
     selection = ""
     while order_confirmed.lower() != 'y':
@@ -61,6 +66,9 @@ def get_customer_data():
 
 
 def push_order_to_database(order, worksheet, language, word_count, customer):
+    """
+    Push order data back to the database for record.
+    """
     data = [order.number, str(order.date), language, word_count,
             order.total_value, customer.name, customer.email]
     worksheet.append_row(data)
