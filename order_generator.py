@@ -76,8 +76,12 @@ def push_order_to_database(order, worksheet, language, word_count, customer):
 
 def create_order_confrimation_message(customer, order, language,
                                       word_count, linguist):
+    """
+    Create message with order details to send to customer via email.
+    """
     turnaround_time = linguist.calculate_turnaround_time(word_count)
-    message = "\n".join((f"Thank you for your order, {customer.name}",
+    message = "\n".join((f"Hello {customer.name},",
+                         "Thank you for your order!"
                          "Here are your order details:",
                          f"{'-'*35}",
                          f"<strong>Order number</strong>: {order.number}",
@@ -91,7 +95,7 @@ def create_order_confrimation_message(customer, order, language,
                          "<strong>Payment details</strong>:",
                          "Please make a payment via PayPal to",
                          "payments@translateit.com\n",
-                         "Translation should be ready around "
+                         "Translation should be ready in around "
                          f"<strong>{turnaround_time}</strong> "
                          "after we confirm your order."))
     return message
