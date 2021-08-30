@@ -142,8 +142,8 @@ def main():
     customer = order_generator.get_customer_data()
     order_generator.push_order_to_database(
         order, order_data, selected_lang, word_count, customer)
-    message = order_generator.create_order_confrimation_message(customer,
-        order, selected_lang, word_count, selected_linguist)
+    message = order_generator.create_order_confrimation_message(
+        customer, order, selected_lang, word_count, selected_linguist)
     send_confirmation.send_email_confimation(
         order.number, customer.email, message)
 
