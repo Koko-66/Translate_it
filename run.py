@@ -4,6 +4,8 @@ import word_counter
 import linguist_selector
 import order_generator
 from classes.linguist import Linguist
+import send_confirmation
+
 
 """
 Settings from setting up Google sheet are taken from Code Institute walk
@@ -140,6 +142,10 @@ def main():
     customer = order_generator.get_customer_data()
     order_generator.push_order_to_database(order, order_data,
                                            selected_lang, word_count, customer)
+    message = order_generator.create_order_confrimation_message(
+        order, selected_lang, word_count, selected_linguist)
+    send_confirmation.send_email_confimation(
+        order.number, customer.email, message)
 
 
 main()

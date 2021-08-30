@@ -5,3 +5,5 @@ env.py
 __pycache__/
 *.py[cod]
 creds.json
+oauth2_creds.json
+yagmail_creds.py
