@@ -135,30 +135,35 @@ def main():
     """
     Run program functions
     """
-    print_welcome()
-    create_lang_dict()
-    print_languages()
-    selected_lang = language_selector()
-    confirm_selection(language_selector)
-    word_count = word_counter.run_word_count()
-    listings = return_linguists(selected_lang)
-    linguist_selector.print_linguists(listings, word_count)
-    criterium = linguist_selector.select_sort_criteria()
-    linguist_selector.sort_by_criterium(listings, criterium)
-    linguist_selector.print_sorted_linguists(listings, word_count, criterium)
-    selected_linguist = linguist_selector.select_linguist(listings)
-    print(selected_linguist.generate_quote(word_count))
-    order_generator.confirm_order(listings, word_count)
-    order_number = generate_order_number()
-    order = order_generator.create_order(
-        order_number, selected_linguist, word_count)
-    customer = order_generator.get_customer_data()
-    order_generator.push_order_to_database(
-        order, order_data, selected_lang, word_count, customer)
-    message = order_generator.create_order_confrimation_message(
-        customer, order, selected_lang, word_count, selected_linguist)
-    send_confirmation.send_email_confimation(
-        order.number, customer.email, message)
+    try:
+        print_welcome()
+        create_lang_dict()
+        print_languages()
+        selected_lang = language_selector()
+        confirm_selection(language_selector)
+        word_count = word_counter.run_word_count()
+        listings = return_linguists(selected_lang)
+        linguist_selector.print_linguists(listings, word_count)
+        criterium = linguist_selector.select_sort_criteria()
+        linguist_selector.sort_by_criterium(listings, criterium)
+        linguist_selector.print_sorted_linguists(
+            listings, word_count, criterium)
+        selected_linguist = linguist_selector.select_linguist(listings)
+        print(selected_linguist.generate_quote(word_count))
+        order_generator.confirm_order(listings, word_count)
+        order_number = generate_order_number()
+        order = order_generator.create_order(
+            order_number, selected_linguist, word_count)
+        customer = order_generator.get_customer_data()
+        order_generator.push_order_to_database(
+            order, order_data, selected_lang, word_count, customer)
+        message = order_generator.create_order_confrimation_message(
+            customer, order, selected_lang, word_count, selected_linguist)
+        send_confirmation.send_email_confimation(
+            order.number, customer.email, message)
+    except EOFError:
+        print("Exiting program...\n")
+        quit()
 
 
 main()
