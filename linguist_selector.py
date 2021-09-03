@@ -55,7 +55,7 @@ def print_linguists(listings, word_count):
     Print linguists matching the language selected by the user.
     """
     for value in listings:
-        print(f'{listings.index(value)+1} - {value.__str__(word_count)}')
+        print(f'\n{listings.index(value)+1} - {value.__str__(word_count)}')
 
 
 def print_sorted_linguists(listings, word_count, criterium):
