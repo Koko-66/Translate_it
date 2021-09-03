@@ -1,120 +1,166 @@
 <!-- ![](my logo?)  -->
+# TABLE OF CONTENTS
+1. [Introduction](#intro)
+2. [UX](#ux)
+  2.1.  [User Stories](#user-stories)
+3. [Features and design](#features-design)
+  3.1. [Existing features](#existing-features)
+  3.2. [Features left to implement](#left-to-implement)
+4. [Technologies](#technologies)
+  4.1. [Languages used](#languages)
+  4.2. [Frameworks, libraries and programs used](#libraries-and-programs)
+5. [Testing](#testing)
+  5.1. [User Stories testing](#user-stories-testing)
+  5.2. [Validation testing](#validation-testing)
+  5.3. [Performance Testing](#performance-testing)
+  5.4. [Bugs and Fixes](#bugs-and-fixes)
+6. [Deployment](#deployment)
+7. [Credits](#credits)
 
-# Translate it!
+## <a name="intro"></a>Translate it!
 
 ![Responsive Mockup]()
-Translate it! is a translation service engine allowing the user to compare pricing and timings from different lingusits and place an order for translating their file in selected language. The engine 
+Translate it! is a translation service engine that allows the user compare pricing, timings, rating and experience of lingusits translating into their selected langauge. They can then select the lingusit, and place an order for translating their text. 
+The service is easy to use and even though it is simple enough to use by children, considering the the type of service, it is mostly aimed at adults and young adults.
 
-## Deployed at
+<!-- Data model  -->
+<!-- Process flow chart -->
 
-## UX
+## <a name="ux"></a>UX
 
-### User Stories
-1. As a user:
-  - I know what is the purpose of the service and can follow instructions on how to use it.
-  - I can see the languages available and select the one into which I want to translate my file.
-  - I can copy the text for translation to get the word count.
-  - I can see a list of linguists available in my selected language.
-  - I am given the information about how much the translation into my selected language would cost and 
-    how long it would take depending on the linguist.
-  - I can compare different linguists depending on the selection criteria that is most important to me.
-  - I can place an order and receive confirmation that it has been placed. 
-  - I know what process is running in the background.
+### <a name="user-stories"></a>User Stories
+As a user:
+  1. I know what is the purpose of the service and can follow instructions on how to use it.
+  2. I can see the languages available and select the one into which I want to translate my file.
+  3. I can copy the text for translation to get the word count.
+  4. I can see a list of linguists available in my selected language along with their information.
+  5. I am given the information about how much the translation into my selected language would cost and how long it would take depending on the linguist.
+  6. I can select the language I wish to translate into and correct my selection if I made a mistake.
+  7. I can sort the linguists depending on the selection criteria that is most important to me.
+  8. I can place an order and receive confirmation on screen and via e-mail that it has been placed. 
+  9. I know what process is running in the background at all times and can confirm my selections at different points.
+  10. The program runs smoothly, does not take to long and does not crash when my input is not correct.
 
-## Features and Design
-- Selection from different languages. During the development changed the representation of the language in the Google Sheet database to be in one cell rather than separate. Considering the size of the database and the list of available languages, this seemed a more efficient solution.
-- Selection from different linguists
-- Selection of comparison criteria - price, completion time, experience average customer rating and presentation of results.
-   <!-- Solutions for graphs: 
-   1. none and just printing according to the sorting selected by the user 
-   2. one graph opening as a separate HTML page with all criteria (if possible due to data ranges); 
-   3. separate graph for each criteria placed on the same page -->
-- 
+## <a name="features-design"></a>Features and Design
+Program takes the user through the process step by step, continuously providing feedback and asking for confirmation of choices made.
 
-### Existing Features
+### <a name="existing-features"></a>Existing Features
 
-### Features Left to Implement
+#### Google Sheet database
+The program exchanges linguist and order data from a Google Sheet that is acting as a database (link to the database [here]()). Language and Rating data in the Google Sheet is validated using it's in-build validation features.
+The program retreives the linguits and language data from the Google Sheet and pushes the order data back to the Order_data worksheet.
+_Note:&nbsp;all&nbsp;data&nbsp;in&nbsp;the&nbsp;database&nbsp;is&nbsp;fictional._
 
-## Technologies Used
+#### Language selection
+When run, the program prints a list of the available languages from the database, asks the customer to make a selection and confirm their choice, giving them opportunity to correct their selection if they make a mistake.
 
-### Languages
+#### Word counter
+The program allows the customer to paste in the text into the program directly and performs a word count later used to calculate costs for translation depending on the linguist's price. The user can paste in multiple lines or pieces of texts, until they indicate they are ready but entering specified combination of keys. 
+
+#### Calcuation of total price and approximate turnaround time
+
+
+#### Sorting of linguists
+The program prints a list of linguists available for the selected language first in their order of appearance in the database. It then allows the customer to sort the results by price, turnaround, rating and years of experience, which would be helpful as the database grows, or can not sort at all. If sorting is selected, linguists are printed again according to the sorting criteria: 
+  - from cheapest to most expensive;
+  - quickest to slowest in terms of turnaround;
+  - from ones with the highest to lowest rating or years of experience.
+If no sorting is selected, the program moves to the next step.
+
+#### Order generation and e-mail confirmation 
+Once the user confirms their selection of the linguist they are asked for their name and e-mail address. This information is then pushed into the database, along with the order number and value for future tracking, and the order confirmation is sent from dedicated e-mail account to the indicated e-mail address. E-mail address is validated for correct format only.
+Order number is generated based on the last number present in the Google Sheet. If no number is present, a preset number is used instead.
+
+#### Confirmation of selections / ability to change selection
+The users have the opportunity to confirm their selection of language and the linguist and change it if needed. Similarly, the user is asked to confirm their order and if "no" is selected is given an option to either go back to selecting the linguuist again or can exit the program.
+
+#### Validation of Data Input
+At points requiring user input, the input data is appropriately validated. 
+  1. Language selection and selection of the sorting crtieria validates against the key value in the dictionary holding langauges using the try/exept method.
+  2. Word counting function checks for lack of data i.e. the word count being equal to 0. 
+  3. Selection of linguist checks for Value and Index Errors to ensure the user inputs correct value using try/except method as well.
+  4. Functions asking to confirm selection validate for input equal to allowed values using if statements.
+  5. The value for last order number present in the database is checked for correct value and returns 101 as first number if no order is present.
+  5. The format of the e-mail is validated with the use of Regex.
+
+### <a name="left-to-implement"></a>Features Left to Implement
+
+### File upload
+Feature allowing the user to upload the file for word counting and translation.
+
+## <a name="technologies"></a>Technologies Used
+### <a name="languages"></a>Languages
 - HTML and CSS (provided in Code Institute's template)
 - Python
+- json (files storing credentials)
 
-### Frameworks, Libraries and Programs used
+### <a name="libraries-and-programs"></a>Frameworks, Libraries and Programs used
 - VS Code: used as the primary code editor
+- GitPod: used as a back up code editor
 - Git: used for version control
 - Git Hub: used to store project files
 - yEd: to create the algorithm for the porgram and it's data model 
 - Google Sheets to store the database of linguists
-- Python Libraries 
+- Python Libraries: 
+  - gspread: used for wokrking with the data from Google Sheet
+  - re: used in spliting input text into individual words and validation of customer e-mail address;
+  - google.oauth2.service_account
+  - operator: used in function sorting the list with lingusits by their attributes;
+  - yagmail and yagmail.creds: used for sending order confirmation to the user via e-mail
 - Heroku: used to deploy the live version of the project
 - [Am I Responsive?](http://ami.responsivedesign.is/#) site to generate the resposivene mockup
 
-## Testing 
+## <a name="testing"></a>Testing 
 
-### User Story Testing
-1. As a user:
-  - I know what is the purpose of the service and how can follow instructions on how to use it.
-    <!-- * Tested on a couple of family members to check if instructions and introduction to the program are clear.  -->
-  - I can see the languages available and select the one into which I want to translate my file.
-  <!-- - I can upload the file for a word count-->
-  - I can see a list of linguists available in my selected language
-  - I am given the information how much the translation into my selected language would cost and how long it would take depending on the linguist.
-  - I can compare different linguists depending on the selection criteria that is most important to me.
-  - I can place an order and receive confirmation that it has been placed.
-  - I know what process is running in the background.
+### <a name="user-stories-testing"></a>User Story Testing
+
+1. I know what is the purpose of the service and can follow instructions on how to use it.
+    On running the code the user is presented with introduction to the service and its brief introductions. Each step of the program is accompanied by relevant instructions
+2. I can see the languages available and select the one into which I want to translate my file.
+    The list of available languages is extracted from the database and printed at the start of the program. 
+3. I can copy the text for translation to get the word count.
+    The user can copy lines or pieces of text to translate and receives feedback from the program about the word count.
+4. I can see a list of linguists available in my selected language along with their information.
+    A list of lingusits matching the selected language is printed once the word count is finished. 
+5. I am given the information about how much the translation into my selected language would cost and how long it would take depending on the linguist. 
+    The listings include the lingusits' ID, name, language, experience, rating, price per word, total price for the text and its estimated turnaround time.
+6. I can select the language I wish to translate into and correct my selection if I made a mistake.
+    The user is asked to select the language and then confirm their selection. If selection is not confirmed, the user is asked to select the language again.
+7. I can sort the linguists depending on the selection criteria that is most important to me.
+    The user has an option to sort the listings of lingusits according to their price, time needed to complete translation (turnaround time), experience and rating. 
+8. I can place an order and receive confirmation on screen and via e-mail that it has been placed. 
+    Once linguist is selected and confirmed, the user receives feedback on screen and email with order details.
+9. I know at what stage in the proces I am, what process is running in the background and can confirm my selections at different points.
+    Throughout the program, the user receives feedback on their input and the program's background activities, instructions on expected input and is asked to confirm their choices.
+10. The program runs smoothly, does not take to long and does not crash when my input is not correct.
+    Testing has shown that the program runs quickly and for the functions that might take a bit longer feedback message is printed informing about the background process. Various input validation menthods are implement throughout the program to handle exeptions and errors that might be caused by the user input.
   
-
-### Validator Testing 
+### <a name="vlaidator-testing"></a>Validator Testing 
 - Run through [Pep 8 online check](http://pep8online.com/) validator
-  
+- Used flakes and cornflakes-linter VS Code extension to validate code as as it's been developed. 
 
-<!-- ### Performance Testing -->
+### <a name="performance-testing"></a>Performance Testing
+Performance testing was done by running the program. 
 
-### Bugs and Fixes
-1. In word_counter module copy/pasting text that contains new line causes shell to interpret the new line text as a new command rather than part of text, breatking the program.
-__FIXED__ Used method that creates a list to which pasted text is appended line by line, and then converted to a string using join() method. Solution found on [Stackoverflow](https://stackoverflow.com/questions/34889012/how-to-paste-multiple-lines-of-text-into-python-input). This also allows the user to input mutliple texts.
-2. word_counter module runs input request before printing instructions, even if this function is called later. Same happens when imported module to the main run.py file, even though no function is called in the module.
-__FIXED__ Removed @split_text decorator and used the function with get_user_input as an argument instead.
-3. Creating Linguist instance from Google Sheet data in the linguist_selector.py required importing sheet data from the main run.py module, causing circular import issues. 
-__FIXED__ Moved the function to the main module (run.py).
-4. The creation of the linguists listing and sorting required some consideration and testing different methods on how best to approach this. 
-__FIXED__ Adjusted the function to return a list of objects instead of a dictionary, thus allowing the use of operand.getattribute to sort returned lists.
-5. Initial idea of creating a dictonary with row number as key and the object returned as string caused issues applying the sorting method. In the sorting function, when sorted list assigned to another variable returned None object.
-__FIXED__ Adjusted sort_by_criterium function to reassign the sorted list to the same variable as that passed in the function.
-6. sort_by_criteria function returns exception when selecting 0.
-__FIXED__ Added 0 to the criteria dictionary and if statement to the sorting function to pass when no sorting is selected.
-7. Printing quotation after selection of the linguist throws an error due to incorrect data types. 
-__FIXED__ Converted class attributes to floats in functions calculating total price and turnaround time and changed return_word_count function in word_counter module to return word_count rather than a string. 
-8. The select_linguist function does not account for input that is not an integer and raises an ValueError. 
-__FIXED__ Add ValueError to exception handling within the function.
-9. Sorting of the lingusits' listings is from lower to higher, since all criteria are treated the same way. 
+### <a name="bugs-and-fixes"></a>Bugs and fixed
+Bugs that appeared during the development and their fixes are documented in a separate file - [TESTING_BUGS&FIXES]()
 
-10. When confirmin the order the confirm order function asks for confirming the order twice.
-
-11. Removing sorting criteria '0 - none' from the dictionary to prevent it from printing, causes an exeption (Invalid input) to be raised when user input is '0', since it is no loger a dictionary key.
-__FIXED__ Added if statement to the function to handle case with '0' as input separately and adjusted sort_by_criterium function to reflect the new input value.
-
-### Unfixed Bugs
-1. Confirm selection function when used for linguist selection raises a TypeError: 'Linguist' object is not callable. Need to change the object the function returns.
-2. Ctrl
-
-## Deployment
+## <a name="deployment">Deployment
 - The program was deployed to Heroku and is available here: The steps to deploy are as follows: 
  
 
-## Credits 
-<!-- A great thank you to: 
+## <a name="credits">Credits 
+A great thank you to: 
 - My mentor, Caleb, for extremely valuable pointers on how to visualise the movement on the board, make decisions on the best UX approaches and support throughout the whole project. 
-- -->
-- 
-<!-- - Stackoverflow, its users and their previous posts to help me find solutions to problems I encountered. Specifically: 
-https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333: for solution on how to sort the linguists listings according to specific attribute and https://docs.python.org/3/library/operator.html for information on how to apply it
-- https://pythonexamples.org/python-split-string-by-regex/ for tips on how to use regex for spliting the content.
-- https://www.w3schools.com for tips on usage of various in-built functions and methods.
-- -->
 
-### Content
-- css, xterm.css and xterm.js provided with the Code Institute template, orirginally forked from [Fabrice Bellard's javascript vt100 for jslinux](http://bellard.org/jslinux/)
-- 
+- Stackoverflow, its users and their previous posts to help me find solutions to problems I encountered. Specifically: 
+  - Ned Batchelder for his [suggestion](https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333) on how to sort linguists listings according to specific attribute and operator module's [official documentation](https://docs.python.org/3/library/operator.html) for information on how to apply it.
+
+- [Python Examples](https://pythonexamples.org/python-split-string-by-regex/) for tips on how to use regex for spliting the content.
+
+- [W3 schools](https://www.w3schools.com) for tips on usage of various in-built functions and methods.
+
+- [Geeks for Geeks](https://www.geeksforgeeks.org/check-if-email-address-valid-or-not-in-python/) for code for e-mail validation using Regex.
+<!-- - https://stackoverflow.com/questions/37201250/sending-email-via-gmail-python) for tips on how to apply Auth2 with- -->
+
+Content of the css, xterm.css and xterm.js provided with the Code Institute template, orirginally forked from [Fabrice Bellard's javascript vt100 for jslinux](http://bellard.org/jslinux/)
