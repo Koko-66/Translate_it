@@ -58,7 +58,7 @@ When run, the program prints a list of the available languages from the database
 The program allows the customer to paste in the text into the program directly and performs a word count later used to calculate costs for translation depending on the linguist's price. The user can paste in multiple lines or pieces of texts, until they indicate they are ready but entering specified combination of keys. 
 
 #### Calcuation of total price and approximate turnaround time
-
+The program calculates the total price for the project depending on the per word price for each linguist, as well as the time needed to complete the translation that is based on the number of words the linguist is able to translate a day. The minimum turnaournd time is set to 1 day, to be more realistic.
 
 #### Sorting of linguists
 The program prints a list of linguists available for the selected language first in their order of appearance in the database. It then allows the customer to sort the results by price, turnaround, rating and years of experience, which would be helpful as the database grows, or can not sort at all. If sorting is selected, linguists are printed again according to the sorting criteria: 
@@ -86,7 +86,10 @@ At points requiring user input, the input data is appropriately validated.
 ### <a name="left-to-implement"></a>Features Left to Implement
 
 ### File upload
-Feature allowing the user to upload the file for word counting and translation.
+The program would ideally include a feature allowing the user to upload the file for word counting and translation. This is would require implementation of file-handling and storage, which fall outside of scope for this project.
+
+### E-mail validation using Oauth2
+Implementation of a more secure way of accessing the e-mail using Oauth2 credentials.
 
 ## <a name="technologies"></a>Technologies Used
 ### <a name="languages"></a>Languages
