@@ -27,6 +27,8 @@ The service is easy to use and even though it is simple enough to use by childre
 <!-- Process flow chart -->
 
 ## <a name="ux"></a>UX
+Considering the program is written using Python only, the UX is restricted to the functionality of the program, its features and ease of use.
+In terms of the visual aspects, care was taken to make instructions and on-screen feedback easy to read and understand and arrange it in as easthetically pleasing way as possible by manipulating the arrangement of lines and usage of new lines, underscoores and dashes. 
 
 ### <a name="user-stories"></a>User Stories
 As a user:
@@ -54,6 +56,8 @@ _Note:&nbsp;all&nbsp;data&nbsp;in&nbsp;the&nbsp;database&nbsp;is&nbsp;fictional.
 #### Language selection
 When run, the program prints a list of the available languages from the database, asks the customer to make a selection and confirm their choice, giving them opportunity to correct their selection if they make a mistake.
 
+_Note: During the development the representation of the language in the Google Sheet database was changed to be in one cell rather than separate. Considering the size of the database and the list of available languages, this seemed a more efficient solution, removing the need to join and split the language/locale combination to retrieve and manipulate data._
+
 #### Word counter
 The program allows the customer to paste in the text into the program directly and performs a word count later used to calculate costs for translation depending on the linguist's price. The user can paste in multiple lines or pieces of texts, until they indicate they are ready but entering specified combination of keys. 
 
@@ -66,6 +70,8 @@ The program prints a list of linguists available for the selected language first
   - quickest to slowest in terms of turnaround;
   - from ones with the highest to lowest rating or years of experience.
 If no sorting is selected, the program moves to the next step.
+
+The user can also re-sort the lingusits according to a different criteria if they choose not to confirm the order and want to select the linguist once again.
 
 #### Order generation and e-mail confirmation 
 Once the user confirms their selection of the linguist they are asked for their name and e-mail address. This information is then pushed into the database, along with the order number and value for future tracking, and the order confirmation is sent from dedicated e-mail account to the indicated e-mail address. E-mail address is validated for correct format only.
@@ -85,13 +91,13 @@ At points requiring user input, the input data is appropriately validated.
 
 ### <a name="left-to-implement"></a>Features Left to Implement
 
-### File upload
+#### File upload
 The program would ideally include a feature allowing the user to upload the file for word counting and translation. This is would require implementation of file-handling and storage, which fall outside of scope for this project.
 
-### E-mail validation using Oauth2
+#### E-mail validation using Oauth2
 Implementation of a more secure way of accessing the e-mail using Oauth2 credentials.
 
-## <a name="technologies"></a>Technologies Used
+## <a name="technologies"></a>Technologies used
 ### <a name="languages"></a>Languages
 - HTML and CSS (provided in Code Institute's template)
 - Python
