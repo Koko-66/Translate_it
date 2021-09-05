@@ -29,9 +29,7 @@ rating = SHEET.worksheet('Rating')
 
 
 def print_welcome():
-    """
-    Prints welcome message with intro to the program.
-    """
+    """Prints welcome message with intro to the program."""
     welcome = """\nWelcome to Translate it! - a quick and easy way
 to find a lingusit and have your text translated.
 To start, select the language from the list below
@@ -54,9 +52,7 @@ def create_lang_dict():
 
 
 def print_languages():
-    """
-    Prints list of languages for selection.
-    """
+    """Prints list of languages for selection."""
     lang_dict = create_lang_dict()
     for key, value in lang_dict.items():
         print(f'{key} - {value}')
@@ -110,18 +106,23 @@ def return_linguists(language):
     listings = []
     for row in rows:
         listing = linguists.row_values(row)
-        linguist = Linguist(
-            listing[0], f'{listing[1]} {listing[2]}',
-            listing[3], int(listing[4]), listing[5],
-            listing[6], listing[7])
+        id = listing[0]
+        name = f'{listing[1]} {listing[2]}'
+        language = listing[3]
+        experience = int(listing[4])
+        price = float(listing[5])
+        turnaround = int(listing[6])
+        rating = int(listing[7])
+        linguist = Linguist(id, name, language, experience,
+                            price, turnaround, rating)
         listings.append(linguist)
     return listings
 
 
 def generate_order_number():
     """
-    Generate order number based on the last entry in the order worksheet of the
-    database. If none present, sets order number to 101.
+    Generate order number based on the last entry in the order worksheet
+    of the database. If none present, sets order number to 101.
     """
     try:
         order_number = int(order_data.col_values(1)[-1]) + 1
@@ -132,9 +133,7 @@ def generate_order_number():
 
 
 def main():
-    """
-    Run program functions
-    """
+    """Run program functions"""
     try:
         print_welcome()
         create_lang_dict()
