@@ -27,7 +27,11 @@ def confirm_order(listings, word_count):
                 selection = input(
                     f"1 - {options.get('1')} or 2 - {options.get('2')}")
                 if selection == "1":
-                    linguist_selector.print_linguists(listings, word_count)
+                    # linguist_selector.print_linguists(listings, word_count)
+                    criterium = linguist_selector.select_sort_criteria()
+                    linguist_selector.sort_by_criterium(listings, criterium)
+                    linguist_selector.print_sorted_linguists(
+                        listings, word_count, criterium)
                     selected_linguist = linguist_selector.select_linguist(
                         listings)
                     print(selected_linguist.generate_quote(word_count))
