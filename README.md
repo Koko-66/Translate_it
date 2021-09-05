@@ -155,7 +155,7 @@ For a real-life application, it would be good to implement a more thorough valid
 Performance testing was done by running the program. 
 
 ### <a name="bugs-and-fixes"></a>Bugs and fixed
-Bugs that appeared during the development and their fixes are documented in a separate file - [TESTING_BUGS&FIXES]()
+Bugs that appeared during the development and their fixes are documented in a separate file - [TESTING_BUGS]()
 
 ## <a name="deployment">Deployment
 - The program was deployed to Heroku and is available here: The steps to deploy are as follows: 
