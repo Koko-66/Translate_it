@@ -9,11 +9,7 @@
 4. [Technologies](#technologies)<br>
   4.1. [Languages used](#languages)<br>
   4.2. [Frameworks, libraries and programs used](#libraries-and-programs)
-5. [Testing](#testing)<br>
-  5.1. [User Stories testing](#user-stories-testing)<br>
-  5.2. [Validation testing](#validation-testing)<br>
-  5.3. [Performance Testing](#performance-testing)<br>
-  5.4. [Bugs and Fixes](#bugs-and-fixes)
+5. [Testing](#testing)
 6. [Deployment](#deployment)
 7. [Credits](#credits)
 
@@ -23,12 +19,11 @@
 Translate it! is a translation service engine that allows the user compare pricing, timings, rating and experience of lingusits translating into their selected langauge. They can then select the lingusit, and place an order for translating their text. 
 The service is easy to use and even though it is simple enough to use by children, considering the the type of service, it is mostly aimed at adults and young adults.
 
-<!-- Data model  -->
-<!-- Process flow chart -->
-
 ## <a name="ux"></a>UX
 Considering the program is written using Python only, the UX is restricted to the functionality of the program, its features and ease of use.
 In terms of the visual aspects, care was taken to make instructions and on-screen feedback easy to read and understand and arrange it in as easthetically pleasing way as possible by manipulating the arrangement of lines and usage of new lines, underscoores and dashes. 
+
+The program's process flowchart is available [here](https://github.com/Koko-66/Translate_it/blob/main/data/Translate_it!_flow-chart.pdf) and the representation of the data model [here](https://github.com/Koko-66/Translate_it/blob/main/data/Translate-it!_data-model.pdf).
 
 ### <a name="user-stories"></a>User Stories
 As a user:
@@ -107,55 +102,24 @@ For a real-life application, it would be good to implement a more thorough valid
 - json (files storing credentials)
 
 ### <a name="libraries-and-programs"></a>Frameworks, Libraries and Programs used
-- VS Code: used as the primary code editor
+- VS Code: used as the primary code editor and debugger
 - GitPod: used as a back up code editor
 - Git: used for version control
 - Git Hub: used to store project files
+- [Python Tutor](https://pythontutor.com/): used to help with debugging
 - yEd: to create the algorithm for the porgram and it's data model 
-- Google Sheets to store the database of linguists
+- Google Sheets to store the database of linguists and Google mail to send confirmation e-mails.
 - Python Libraries: 
   - gspread: used for wokrking with the data from Google Sheet
   - re: used in spliting input text into individual words and validation of customer e-mail address;
-  - google.oauth2.service_account
+  - google.oauth2.service_account to connect to the Google Sheet.
   - operator: used in function sorting the list with lingusits by their attributes;
   - yagmail and yagmail.creds: used for sending order confirmation to the user via e-mail
 - Heroku: used to deploy the live version of the project
 - [Am I Responsive?](http://ami.responsivedesign.is/#) site to generate the resposivene mockup
 
 ## <a name="testing"></a>Testing 
-
-### <a name="user-stories-testing"></a>User Story Testing
-
-1. I know what is the purpose of the service and can follow instructions on how to use it.
-    On running the code the user is presented with introduction to the service and its brief introductions. Each step of the program is accompanied by relevant instructions
-2. I can see the languages available and select the one into which I want to translate my file.
-    The list of available languages is extracted from the database and printed at the start of the program. 
-3. I can copy the text for translation to get the word count.
-    The user can copy lines or pieces of text to translate and receives feedback from the program about the word count.
-4. I can see a list of linguists available in my selected language along with their information.
-    A list of lingusits matching the selected language is printed once the word count is finished. 
-5. I am given the information about how much the translation into my selected language would cost and how long it would take depending on the linguist. 
-    The listings include the lingusits' ID, name, language, experience, rating, price per word, total price for the text and its estimated turnaround time.
-6. I can select the language I wish to translate into and correct my selection if I made a mistake.
-    The user is asked to select the language and then confirm their selection. If selection is not confirmed, the user is asked to select the language again.
-7. I can sort the linguists depending on the selection criteria that is most important to me.
-    The user has an option to sort the listings of lingusits according to their price, time needed to complete translation (turnaround time), experience and rating. 
-8. I can place an order and receive confirmation on screen and via e-mail that it has been placed. 
-    Once linguist is selected and confirmed, the user receives feedback on screen and email with order details.
-9. I know at what stage in the proces I am, what process is running in the background and can confirm my selections at different points.
-    Throughout the program, the user receives feedback on their input and the program's background activities, instructions on expected input and is asked to confirm their choices.
-10. The program runs smoothly, does not take to long and does not crash when my input is not correct.
-    Testing has shown that the program runs quickly and for the functions that might take a bit longer feedback message is printed informing about the background process. Various input validation menthods are implement throughout the program to handle exeptions and errors that might be caused by the user input.
-  
-### <a name="vlaidator-testing"></a>Validator Testing 
-- Run through [Pep 8 online check](http://pep8online.com/) validator
-- Used flakes and cornflakes-linter VS Code extension to validate code as as it's been developed. 
-
-### <a name="performance-testing"></a>Performance Testing
-Performance testing was done by running the program. 
-
-### <a name="bugs-and-fixes"></a>Bugs and fixed
-Bugs that appeared during the development and their fixes are documented in a separate file - [TESTING_BUGS](https://github.com/Koko-66/Translate_it/blob/main/TESTING_BUGS.md)
+Information about testing is available in a separate file [here](https://github.com/Koko-66/Translate_it/blob/main/TESTING.md)
 
 ## <a name="deployment">Deployment
 - The program was deployed to Heroku and is available here: The steps to deploy are as follows: 
@@ -165,7 +129,7 @@ The program requires Python 3 and higher.
 
 ## <a name="credits">Credits 
 A great thank you to: 
-- My mentor, Caleb, for extremely valuable pointers on how to visualise the movement on the board, make decisions on the best UX approaches and support throughout the whole project. 
+- My mentor, Caleb Mbakwe, for extremely valuable pointers on how to visualise the movement on the board, make decisions on the best UX approaches and organise the code, and his support throughout the whole project. 
 
 - Stackoverflow, its users and their previous posts to help me find solutions to problems I encountered. Specifically: 
   - Ned Batchelder for his [suggestion](https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333) on how to sort linguists listings according to specific attribute and operator module's [official documentation](https://docs.python.org/3/library/operator.html) for information on how to apply it.

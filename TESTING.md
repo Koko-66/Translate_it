@@ -1,5 +1,42 @@
-# <a name="bugs-and-fixes"></a>Bugs and Fixes
-This file contains a list of bugs I came across during the development of the program and their fixes.
+# TESTING
+The program was tested at each step of the development within the development environment. The testing process included:
+1. [User Stories testing](#user-stories-testing)
+2. [Validation testing](#validation-testing)
+3. [Performance testing](#performance-testing)
+4. [Development testing](#bugs-and-fixes)
+
+## <a name="user-stories-testing"></a>User Story testing
+1. I know what is the purpose of the service and can follow instructions on how to use it.<br>
+    On running the code the user is presented with introduction to the service and its brief introductions. Each step of the program is accompanied by relevant instructions
+2. I can see the languages available and select the one into which I want to translate my file.<br>
+    The list of available languages is extracted from the database and printed at the start of the program. 
+3. I can copy the text for translation to get the word count.
+    The user can copy lines or pieces of text to translate and receives feedback from the program about the word count.
+4. I can see a list of linguists available in my selected language along with their information.<br>
+    A list of lingusits matching the selected language is printed once the word count is finished. 
+5. I am given the information about how much the translation into my selected language would cost and how long it would take depending on the linguist.<br>
+    The listings include the lingusits' ID, name, language, experience, rating, price per word, total price for the text and its estimated turnaround time.
+6. I can select the language I wish to translate into and correct my selection if I made a mistake.<br>
+    The user is asked to select the language and then confirm their selection. If selection is not confirmed, the user is asked to select the language again.
+7. I can sort the linguists depending on the selection criteria that is most important to me.<br>
+    The user has an option to sort the listings of lingusits according to their price, time needed to complete translation (turnaround time), experience and rating.<br>
+8. I can place an order and receive confirmation on screen and via e-mail that it has been placed.<br>
+    Once linguist is selected and confirmed, the user receives feedback on screen and email with order details.
+9. I know at what stage in the proces I am, what process is running in the background and can confirm my selections at different points.<br>
+    Throughout the program, the user receives feedback on their input and the program's background activities, instructions on expected input and is asked to confirm their choices.
+10. The program runs smoothly, does not take to long and does not crash when my input is not correct.<br>
+    Testing has shown that the program runs quickly and for the functions that might take a bit longer feedback message is printed informing about the background process. Various input validation menthods are implement throughout the program to handle exeptions and errors that might be caused by the user input.
+  
+## <a name="vlaidator-testing"></a>Validator testing 
+- Run through [Pep 8 online check](http://pep8online.com/) validator
+- Used flakes and cornflakes-linter VS Code extension to validate code as as it's been developed. 
+
+## <a name="performance-testing"></a>Performance testing
+Performance testing was done by running the program. 
+
+## <a name="bugs-and-fixes"></a>Development Testing
+Each feature was tested while being developed to ensure correct and error-free functionality.
+Bugs encountered during the development and their fixes are listed below.
 
 1. In the *word_counter* module copy/pasting text that contains new line causes shell to interpret the new line text as a new command rather than part of text and preventing it from running correctly.<br>
 __FIXED__ Used method that creates a list to which pasted text is appended line by line, and then converted to a string using join() method. Solution found on [Stackoverflow](https://stackoverflow.com/questions/34889012/how-to-paste-multiple-lines-of-text-into-python-input). This also allows the user to input mutliple texts.
