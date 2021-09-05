@@ -1,18 +1,18 @@
 <!-- ![](my logo?)  -->
 # TABLE OF CONTENTS
 1. [Introduction](#intro)
-2. [UX](#ux)
-  2.1.  [User Stories](#user-stories)
-3. [Features and design](#features-design)
-  3.1. [Existing features](#existing-features)
+2. [UX](#ux)<br>
+  2.1 [User Stories](#user-stories)
+3. [Features and design](#features-design)<br>
+  3.1. [Existing features](#existing-features)<br>
   3.2. [Features left to implement](#left-to-implement)
-4. [Technologies](#technologies)
-  4.1. [Languages used](#languages)
+4. [Technologies](#technologies)<br>
+  4.1. [Languages used](#languages)<br>
   4.2. [Frameworks, libraries and programs used](#libraries-and-programs)
-5. [Testing](#testing)
-  5.1. [User Stories testing](#user-stories-testing)
-  5.2. [Validation testing](#validation-testing)
-  5.3. [Performance Testing](#performance-testing)
+5. [Testing](#testing)<br>
+  5.1. [User Stories testing](#user-stories-testing)<br>
+  5.2. [Validation testing](#validation-testing)<br>
+  5.3. [Performance Testing](#performance-testing)<br>
   5.4. [Bugs and Fixes](#bugs-and-fixes)
 6. [Deployment](#deployment)
 7. [Credits](#credits)
@@ -97,6 +97,9 @@ The program would ideally include a feature allowing the user to upload the file
 #### E-mail validation using Oauth2
 Implementation of a more secure way of accessing the e-mail using Oauth2 credentials.
 
+#### E-mail address validation
+For a real-life application, it would be good to implement a more thorough validation of the e-mail address, confirming that the e-mail is not only formatted correctly, but is correct and exists.
+
 ## <a name="technologies"></a>Technologies used
 ### <a name="languages"></a>Languages
 - HTML and CSS (provided in Code Institute's template)
@@ -157,6 +160,8 @@ Bugs that appeared during the development and their fixes are documented in a se
 ## <a name="deployment">Deployment
 - The program was deployed to Heroku and is available here: The steps to deploy are as follows: 
  
+
+The program requires Python 3 and higher. 
 
 ## <a name="credits">Credits 
 A great thank you to: 
