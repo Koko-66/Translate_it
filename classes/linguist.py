@@ -99,19 +99,25 @@ class Linguist:
             if turnaround_hours == 1:
                 return "1 hour"
             else:
-                return f"{turnaround_hours} hours."
+                return f"{turnaround_hours} hours"
         else:
             turnaround_days = turnaround_hours/WORKING_HOURS_DAY
             full_days = math.trunc(turnaround_days)
             turnaround_hours = round((turnaround_days - full_days)
                                      * WORKING_HOURS_DAY)
             if turnaround_days == 1:
-                return "1 day."
+                return "1 day"
             else:
                 if turnaround_hours == 0:
-                    return f"{math.trunc(turnaround_days)} day(s)"
+                    if full_days == 1:
+                        return f"{math.trunc(turnaround_days)} day"
+                    else:
+                        return f"{math.trunc(turnaround_days)} days"
                 else:
-                    return f"{full_days} day(s) and {turnaround_hours} hours"
+                    if full_days == 1:
+                        return f"{full_days} day and {turnaround_hours} hours"
+                    else:
+                        return f"{full_days} days and {turnaround_hours} hours"
 
     def generate_quote(self, word_count):
         """Print quotation details for selected linguist."""
