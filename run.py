@@ -37,7 +37,7 @@ import word_counter
 import linguist_selector
 import order_generator
 from classes.linguist import Linguist
-import confirmation_sender
+import confirmation_mailer
 
 
 # Settings for setting up Google sheet are taken from the
@@ -51,7 +51,7 @@ SCOPE = [
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('Linguists_database')
+SHEET = GSPREAD_CLIENT.open('Database')
 
 linguists = SHEET.worksheet('Linguists')
 languages = SHEET.worksheet('Languages')
@@ -198,7 +198,7 @@ def main():
             order, order_data, selected_lang, word_count, customer)
         message = order_generator.create_order_confrimation_message(
             customer, order, selected_lang, word_count, selected_linguist)
-        confirmation_sender.send_email_confimation(
+        confirmation_mailer.send_email_confimation(
             order.number, customer.email, message)
     except EOFError:
         print("Exiting program...\n")
