@@ -90,7 +90,9 @@ def get_customer_data():
         email = input("\nYour e-mail address: ")
         if re.fullmatch(regex, email):
             print("\nThank you! You will receive the \
-confirmation email shortly.")
+confirmation email shortly.\nIf you don't receive the \
+e-mail contact support team at:\
+\ntranslateit7@gmail.com.")
             break
         else:
             print("\nInvalid e-mail, try again.\n")
