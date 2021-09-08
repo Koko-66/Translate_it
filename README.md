@@ -114,7 +114,7 @@ For a real-life application, it would be good to implement a more thorough valid
   - re: used in spliting input text into individual words and validation of customer e-mail address;
   - google.oauth2.service_account to connect to the Google Sheet.
   - operator: used in function sorting the list with lingusits by their attributes;
-  - yagmail and yagmail.creds: used for sending order confirmation to the user via e-mail
+  - yagmail: used for sending order confirmation to the user via e-mail
 - Heroku: used to deploy the live version of the project
 - [Am I Responsive?](http://ami.responsivedesign.is/#) site to generate the resposivene mockup
 
@@ -140,5 +140,6 @@ A great thank you to:
 
 - [Geeks for Geeks](https://www.geeksforgeeks.org/check-if-email-address-valid-or-not-in-python/) for code for e-mail validation using Regex.
 <!-- - https://stackoverflow.com/questions/37201250/sending-email-via-gmail-python) for tips on how to apply Auth2 with- -->
+- [Programiz](https://www.programiz.com/python-programming/docstrings) for notes on how to write docstrings for modules and classes.
 
 Content of the css, xterm.css and xterm.js provided with the Code Institute template, orirginally forked from [Fabrice Bellard's javascript vt100 for jslinux](http://bellard.org/jslinux/)
