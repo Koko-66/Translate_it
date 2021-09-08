@@ -38,7 +38,7 @@ def select_sort_criteria():
                 'Choose number from 0 to 4: \n')
             if criterium_selection != '0':
                 selected_criterium = criteria[criterium_selection]
-                print(f'Linguists sorted by: {selected_criterium.upper()}\n')
+                print(f'\nLinguists sorted by: {selected_criterium.upper()}\n')
                 break
             else:
                 selected_criterium = '0'
