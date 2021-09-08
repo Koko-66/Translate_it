@@ -1,6 +1,25 @@
 """
-Create customer and order class.
-Print order and send details to the customer
+Handle order confirmation and generation. Create instances of
+Order and Customer class.
+
+Functions:
+~~~~~~~~~
+    confirm_order(list, int) -> None
+    create_order(int, obj, int) -> obj (instance of Order)
+    get_customer_data() -> obj (instance of Customer)
+    push_order_to_database(int, str, str, int, obj) -> None
+    create_order_confrimation_message(obj, int, str, int, obj) -> str
+
+Variables:
+~~~~~~~~~
+    listings (list with linguists)
+    word_count
+    number
+    linguist (instnce of Linguist class)
+    order (instance of Order class)
+    customer (instance of Customer class)
+    worksheet
+    language
 """
 
 from classes.customer import Customer
@@ -27,7 +46,6 @@ def confirm_order(listings, word_count):
                 selection = input(
                     f"1 - {options.get('1')} or 2 - {options.get('2')}")
                 if selection == "1":
-                    # linguist_selector.print_linguists(listings, word_count)
                     criterium = linguist_selector.select_sort_criteria()
                     linguist_selector.sort_by_criterium(listings, criterium)
                     linguist_selector.print_sorted_linguists(
@@ -50,7 +68,7 @@ def confirm_order(listings, word_count):
 
 def create_order(number, linguist, word_count):
     """
-    Creates order instance
+    Create an instance of Order.
     """
     total_value = linguist.calculate_total_price(word_count)
     turnaround_time = linguist.calculate_turnaround_time(word_count)
@@ -61,7 +79,7 @@ def create_order(number, linguist, word_count):
 
 def get_customer_data():
     """
-    Get customer name and email.
+    Get name and email from customer; validate e-mail's format.
     """
     print("\nPlease provide your details.")
     name = input("\nYour name: ")
@@ -82,7 +100,7 @@ confirmation email shortly.")
 
 def push_order_to_database(order, worksheet, language, word_count, customer):
     """
-    Push order data back to the database for record.
+    Push order data back to the database.
     """
     data = [order.number, str(order.date), language, word_count,
             order.total_value, customer.name, customer.email]

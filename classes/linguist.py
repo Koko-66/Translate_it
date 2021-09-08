@@ -1,3 +1,4 @@
+"""Create Linguist class."""
 import math
 
 # Number of working hours per day
@@ -5,9 +6,42 @@ WORKING_HOURS_DAY = 6
 
 
 class Linguist:
-    """Creates linguist class"""
+    """
+    A class to represent linguist.
+
+    Attributes:
+    ~~~~~~~~~~
+
+    no: str (linguists id)
+    name: str (linguists full name)
+    language: str (linguist's working language)
+    experinece: int (years of experience)
+    price: float (linguist's pricing)
+    turnaround: int (how many words the lingusits can translate)
+    rating: int (linguist's rating)
+
+    Methods:
+    ~~~~~~~
+
+    calculate_total_price(float):
+            Return total price for the provided text as float.
+    turnaround_time_as_float(int):
+            Return turnaround time for translating provided text as float
+            for comparison.
+    calculate_turnaround_time(int):
+            Return turnaround time for translating provided text as string
+            with information.
+    generate_quote(int):
+            Return summary of the order with selected language, linguist,
+            total price and turnaround time
+
+    Variables:
+        word_count
+    """
+
     def __init__(self, no, name, language,
                  experience, price, turnaround, rating):
+        """Construct the linguist object."""
         self.no = no
         self.name = name
         self.language = language
@@ -17,7 +51,12 @@ class Linguist:
         self.rating = rating
 
     def __str__(self, word_count):
-        """Returns linguist listing as string"""
+        """
+        Return linguist listing as string.
+
+        Takes word_count as parameter to calculates total_price and
+        turnaround time.
+        """
         total_price = self.calculate_total_price(word_count)
         turnaround_time = self.calculate_turnaround_time(word_count)
         return ' ** '.join((f"ID {self.no}: {self.name} - {self.language}",
@@ -29,14 +68,17 @@ class Linguist:
                             f"\n{'_'*50}\n"))
 
     def calculate_total_price(self, word_count):
-        """Calculate total price per linguist."""
+        """Return total price for the word count."""
+
         total_price = round(word_count * float(self.price), 3)
         return total_price
 
     def turnaround_time_as_float(self, word_count):
         """
-        Calculate time needed to translate the text and return it as a float.
-        Minimum turnaround time is one hour.
+        Calculate and return time needed to translate the text and return it
+        as a float.
+
+        Takes word count as argument. Minimum turnaround time: one hour.
         """
         words_per_hour = round(float(self.turnaround)/WORKING_HOURS_DAY)
         turnaround_hours = round(word_count/words_per_hour)
@@ -47,8 +89,10 @@ class Linguist:
 
     def calculate_turnaround_time(self, word_count):
         """
-        Calculate time needed to translate the text.
-        Minimum turnaround time is one hour.
+        Calculate and return time needed to translate the text and return
+        printable information.
+
+        Takes word count as argument. Minimum turnaround time: one hour.
         """
         turnaround_hours = self.turnaround_time_as_float(word_count)
         if turnaround_hours < WORKING_HOURS_DAY:
@@ -70,7 +114,8 @@ class Linguist:
                     return f"{full_days} day(s) and {turnaround_hours} hours"
 
     def generate_quote(self, word_count):
-        """Print quotation details for selected linguist"""
+        """Print quotation details for selected linguist."""
+
         total_price = self.calculate_total_price(word_count)
         turnaround_time = self.calculate_turnaround_time(word_count)
         return '\n'.join(("\nYour quote: ",

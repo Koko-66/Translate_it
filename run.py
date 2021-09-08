@@ -1,16 +1,47 @@
+"""
+Compile all modules and functions and run program.
+Set up link to the database and define functions relying on data from
+the database.
+
+Functions:
+~~~~~~~~~
+    print_welcome(str) -> None
+    create_lang_dict() -> dict
+    print_languages() -> None
+    confirm_selection(func) -> None
+    language_selector() -> str
+    return_linguists(str) -> Any (list of objects)
+    generate_order_number() -> int
+    main()
+
+Variables:
+~~~~~~~~~
+    func
+    language
+
+Variables created and used in the main() function:
+~~~~~~~~~
+    selected_lang
+    word_count
+    listings
+    criterium
+    selected_linguist
+    order_number
+    order
+    customer
+    message
+"""
 import gspread
 from google.oauth2.service_account import Credentials
 import word_counter
 import linguist_selector
 import order_generator
 from classes.linguist import Linguist
-import send_confirmation
+import confirmation_sender
 
 
-"""
-Settings from setting up Google sheet are taken from Code Institute walk
-through project "Love Sandwiches"
-"""
+# Settings for setting up Google sheet are taken from the
+# Code Institute's walk through project "Love Sandwiches"
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -29,19 +60,17 @@ rating = SHEET.worksheet('Rating')
 
 
 def print_welcome():
-    """Prints welcome message with intro to the program."""
+    """Print welcome message with intro to the program."""
     welcome = """\nWelcome to Translate it! - a quick and easy way
 to find a lingusit and have your text translated.
 To start, select the language from the list below
-by choosing the corresponding number and then simply
+by choosing the corresponding number and then
 follow the instructions on the screen.\n"""
     print(welcome)
 
 
 def create_lang_dict():
-    """
-    Creates dictionary with index as key and language with locale as value.
-    """
+    """Return dictionary with all languages from the database."""
     language_list = languages.get_all_values()
     lang_dict = {}
     for i in range(1, len(language_list)):
@@ -52,7 +81,7 @@ def create_lang_dict():
 
 
 def print_languages():
-    """Prints list of languages for selection."""
+    """Print list of languages from the dictionary for selection."""
     lang_dict = create_lang_dict()
     for key, value in lang_dict.items():
         print(f'{key} - {value}')
@@ -60,7 +89,8 @@ def print_languages():
 
 def confirm_selection(func):
     """
-    Ask user to confirm their selection and reruns the function passed.
+    Ask user to confirm their selection and re-run the function passed
+    if not confirmed.
     """
     confirmed = ''
     while confirmed.lower() != 'y':
@@ -77,7 +107,10 @@ def confirm_selection(func):
 
 def language_selector():
     """
-    Get language selection from the user and return for later use.
+    Return language selected by the user.
+
+    Validates user input and asks to choose again until no KeyError
+    is raised.
     """
     lang_dict = create_lang_dict()
     lang_count = len(languages.col_values(1))-1
@@ -97,7 +130,10 @@ def language_selector():
 
 def return_linguists(language):
     """
-    Return a list of row numbers containing selected language.
+    Return a list of linguists with the language passed as argument.
+
+    Iterates through the list of rows containing the selected language pulled
+    from the database and creates a Linguist instance from data in each row.
     """
     cells = linguists.findall(language)
     rows = []
@@ -122,7 +158,7 @@ def return_linguists(language):
 def generate_order_number():
     """
     Generate order number based on the last entry in the order worksheet
-    of the database. If none present, sets order number to 101.
+    in the database. If none present, set order number to 101.
     """
     try:
         order_number = int(order_data.col_values(1)[-1]) + 1
@@ -133,7 +169,11 @@ def generate_order_number():
 
 
 def main():
-    """Run program functions"""
+    """
+    Run program functions.
+
+    If the user hits EOF, quits the program.
+    """
     try:
         print_welcome()
         create_lang_dict()
@@ -158,7 +198,7 @@ def main():
             order, order_data, selected_lang, word_count, customer)
         message = order_generator.create_order_confrimation_message(
             customer, order, selected_lang, word_count, selected_linguist)
-        send_confirmation.send_email_confimation(
+        confirmation_sender.send_email_confimation(
             order.number, customer.email, message)
     except EOFError:
         print("Exiting program...\n")

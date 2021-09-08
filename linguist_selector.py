@@ -1,30 +1,29 @@
 """
-Select criteria for sorting linguists and sort their listings.
-Print linguist list according to selection and then sorting criteria.
+Select and sort linguist listings.
+
+Functions:
+
+    select_sort_criteria() -> str
+    sort_by_criterium(list, str) -> list of objects (sorted)
+    print_linguists(list, int) -> None
+    print_sorted_linguists(list, int, str) -> None
+    select_linguist(list) -> str
+
+
+Variables:
+    word_count
+    listings
+    criterium
 """
 import operator
 
 
-def sort_by_criterium(listings, criterium):
-    """
-    Sort the list of objects returned earlier by selected criterium.
-    """
-    if criterium != '0':
-        if criterium == 'price':
-            # Code taken from:
-            # https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333
-            listings = listings.sort(key=operator.attrgetter(criterium))
-        else:
-            listings = listings.sort(key=operator.attrgetter(criterium),
-                                     reverse=True)
-        return listings
-    else:
-        pass
-
-
 def select_sort_criteria():
     """
-    Select criteria for sorting
+    Select criteria for sorting.
+
+    If KeyError is raised asks for input again. If '0' selected, sets
+    selected_crtierium to '0' and breaks the loop.
     """
     criteria = {'1': 'price', '2': 'turnaround',
                 '3': 'experience', '4': 'rating'}
@@ -50,18 +49,32 @@ def select_sort_criteria():
     return selected_criterium
 
 
+def sort_by_criterium(listings, criterium):
+    """Sort the list of objects passed as listings by selected criterium."""
+    if criterium != '0':
+        if criterium == 'price':
+            # Code taken from:
+            # https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333
+            listings = listings.sort(key=operator.attrgetter(criterium))
+        else:
+            listings = listings.sort(key=operator.attrgetter(criterium),
+                                     reverse=True)
+        return listings
+    else:
+        pass
+
+
 def print_linguists(listings, word_count):
-    """
-    Print linguists matching the language selected by the user.
-    """
+    """Print string representation of the linguists from the passed list."""
     for value in listings:
         print(f'\n{listings.index(value)+1} - {value.__str__(word_count)}')
 
 
 def print_sorted_linguists(listings, word_count, criterium):
     """
-    Prints lingusits after they've been sorted only if sorting
-    criteria is selected.
+    Print lingusits from passed list after sorting.
+
+    Checks for sorting criteria and prints only if selection is not 0 ('none').
     """
     if criterium != '0':
         print_linguists(listings, word_count)
@@ -69,7 +82,9 @@ def print_sorted_linguists(listings, word_count, criterium):
 
 def select_linguist(listings):
     """
-    Select linguist from the listed options
+    Select linguist from the the list.
+
+    If IndexError or ValueError is raised, asks for correct input again.
     """
     counter = len(listings)
     while True:
@@ -77,7 +92,6 @@ def select_linguist(listings):
             linguist_selection = int(input(
                 "\nTo choose the linguist select their number.\n"))
             selected_linguist = listings[linguist_selection-1]
-            # print(f'\nYour selection: {selected_linguist.name}\n')
             return selected_linguist
         except (IndexError, ValueError):
             print(f'\nInvalid selection.\
