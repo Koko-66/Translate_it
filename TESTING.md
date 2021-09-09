@@ -72,4 +72,5 @@ __FIXED__ Changed the `return_linguist()` function that builds an instance of a 
 11. The use of `itertools` external library to create the order number does not work as expected, since restarting the program clears all instances of the class and resets the count to 0.<br>
 __FIXED__ Replaced with a function that grabs the last order number from the database instead and pushes a specified number (101) if there is no order number in the database yet.
 
-12. E-mail authenticatio using OAuth2 does not work.
+12. Attempted e-mail authentication using OAuth2, however simple configuration suggested in yagmail documentation does not work as expected. 
+__NOT FIXED__ Implementation of this feature requires more detailed research and implementation of a more complex code as instructed [here](https://blog.macuyiko.com/post/2016/how-to-send-html-mails-with-oauth2-and-gmail-in-python.html).
