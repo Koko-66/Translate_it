@@ -56,7 +56,7 @@ _Note: During the development, the representation of the language in the Google 
 
 #### Word counter
 The program allows the customer to paste the text into the program directly and performs a word count later used to calculate costs for translation depending on the linguist's price. The user can paste in multiple lines or pieces of texts until they indicate they are ready but entering a specified combination of keys. 
-![Word count]()
+![Word count](https://github.com/Koko-66/Translate_it/blob/main/data/text_input_word_count.png)
 
 #### Calculation of the total price and approximate turnaround time
 The program calculates the total price for the project depending on the per word price for each linguist, as well as the time needed to complete the translation that is based on the number of words the linguist is able to translate a day. The minimum turnaround time is set to 1 day, to be more realistic.
@@ -67,18 +67,26 @@ The program first prints a list of linguists available for the selected language
   - for turnaround: from quickest to slowest;
   - for experience and rating: from highest to lowest.
 If no sorting is selected, the program moves to the next step.
+![Linguists listing](https://github.com/Koko-66/Translate_it/blob/main/data/First_listing_sort_options.png)
+
+Here is an example of listings sorted by Experience:
+![Linguists_sorted](https://github.com/Koko-66/Translate_it/blob/main/data/linguists_sorted.png)
 
 The user can also re-sort the linguists according to a different criterion if they choose not to confirm the order and want to select the linguist once again.
-![Linguists listing]()
 
 #### Order generation and e-mail confirmation 
-Once the user confirms their selection of the linguist they are asked for their name and e-mail address. This information is then pushed into the database along with the order number and value for future tracking, and the order confirmation is sent from a dedicated e-mail account to the indicated e-mail address. The E-mail address is validated for correct format only.
+Once the user selects their lingusit, they are presented with the quote: 
+![Quote](https://github.com/Koko-66/Translate_it/blob/main/data/quote.png)
+Once the user confirms their selection, they are asked for their name and e-mail address. 
+![Customer information](https://github.com/Koko-66/Translate_it/blob/main/data/customer_data_input.png)
+
 The order number is generated based on the last order number in the Google Sheet. If no number is present, a preset number is used instead.
-![Order confirmation]()
+The order and user information is then pushed into the database, and the order confirmation is sent from a dedicated e-mail account to user's the indicated e-mail address. The E-mail address is validated for correct format only.
+![Sample email](https://github.com/Koko-66/Translate_it/blob/main/data/email_confirmation.png)
 
 #### Confirmation of selections / ability to change selection
 The users have the opportunity to confirm their selection of language and the linguist and change it if needed. Similarly, the user is asked to confirm their order and if "no" is selected the user is given an option to either go back to the selection of linguist and their sorting or can exit the program.
-![Order not confirmed options]()
+![Order not confirmed options](https://github.com/Koko-66/Translate_it/blob/main/data/order_not_confrimed_options.png)
 
 #### Validation of Data Input
 At points requiring user input, the input data is appropriately validated. 
@@ -94,7 +102,7 @@ At points requiring user input, the input data is appropriately validated.
 #### File upload
 The program would ideally include a feature allowing the user to upload the file for word counting and translation. This is would require the implementation of file handling and storage, which fall outside of the scope of this project.
 
-#### E-mail validation using Oauth2
+#### E-mail validation using OAuth2
 Implementation of a more secure way of accessing the e-mail using OAuth2 credentials.
 
 #### E-mail address validation
@@ -128,8 +136,10 @@ Information about testing is available in a separate file [here](https://github.
 
 ## <a name="deployment">Deployment
 - The program was deployed to Heroku and is available here: The steps to deploy are as follows: 
- 
 
+
+ 
+## Requirements
 The program requires Python 3 and higher. 
 
 ## <a name="credits">Credits 
