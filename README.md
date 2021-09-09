@@ -50,12 +50,12 @@ The program retrieves the linguist and language data from the Google Sheet and p
 _Note: _all_ _data_ _in_ _the_ _database_ _is_ _fictional._
 
 #### Language selection
-When run, the program prints a list of the available languages from the database and asks the customer to make a selection and confirm their choice, giving them an opportunity to correct their selection if they make a mistake.
+When run, the program prints a list of the available languages from the database and asks the customer to make a selection and confirm their choice, giving them an opportunity to correct their selection if they make a mistake.<br>
 ![Language selection](https://github.com/Koko-66/Translate_it/blob/main/data/language_selection.png)
 _Note: During the development, the representation of the language in the Google Sheet database was changed to be in one cell rather than separate. Considering the size of the database and the list of available languages, this seemed a more efficient solution, removing the need to join and split the language/locale combination to retrieve and manipulate data._
 
 #### Word counter
-The program allows the customer to paste the text into the program directly and performs a word count later used to calculate costs for translation depending on the linguist's price. The user can paste in multiple lines or pieces of texts until they indicate they are ready but entering a specified combination of keys. 
+The program allows the customer to paste the text into the program directly and performs a word count later used to calculate costs for translation depending on the linguist's price. The user can paste in multiple lines or pieces of texts until they indicate they are ready but entering a specified combination of keys.<br> 
 ![Word count](https://github.com/Koko-66/Translate_it/blob/main/data/text_input_word_count.png)
 
 #### Calculation of the total price and approximate turnaround time
@@ -66,18 +66,21 @@ The program first prints a list of linguists available for the selected language
   - for price: from cheapest to most expensive;
   - for turnaround: from quickest to slowest;
   - for experience and rating: from highest to lowest.
-If no sorting is selected, the program moves to the next step.
+If no sorting is selected, the program moves to the next step.<br>
+
 ![Linguists listing](https://github.com/Koko-66/Translate_it/blob/main/data/First_listing_sort_options.png)
 
-Here is an example of listings sorted by Experience:
+Here is an example of listings sorted by Experience:<br>
+
 ![Linguists_sorted](https://github.com/Koko-66/Translate_it/blob/main/data/linguists_sorted.png)
 
 The user can also re-sort the linguists according to a different criterion if they choose not to confirm the order and want to select the linguist once again.
 
 #### Order generation and e-mail confirmation 
-Once the user selects their lingusit, they are presented with the quote: 
+Once the user selects their lingusit, they are presented with the quote:<br>
 ![Quote](https://github.com/Koko-66/Translate_it/blob/main/data/quote.png)
-Once the user confirms their selection, they are asked for their name and e-mail address. 
+
+Once the user confirms their selection, they are asked for their name and e-mail address.<br>
 ![Customer information](https://github.com/Koko-66/Translate_it/blob/main/data/customer_data_input.png)
 
 The order number is generated based on the last order number in the Google Sheet. If no number is present, a preset number is used instead.
@@ -85,7 +88,7 @@ The order and user information is then pushed into the database, and the order c
 ![Sample email](https://github.com/Koko-66/Translate_it/blob/main/data/email_confirmation.png)
 
 #### Confirmation of selections / ability to change selection
-The users have the opportunity to confirm their selection of language and the linguist and change it if needed. Similarly, the user is asked to confirm their order and if "no" is selected the user is given an option to either go back to the selection of linguist and their sorting or can exit the program.
+The users have the opportunity to confirm their selection of language and the linguist and change it if needed. Similarly, the user is asked to confirm their order and if "no" is selected the user is given an option to either go back to the selection of linguist and their sorting or can exit the program.<br>
 ![Order not confirmed options](https://github.com/Koko-66/Translate_it/blob/main/data/order_not_confrimed_options.png)
 
 #### Validation of Data Input
