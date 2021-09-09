@@ -4,7 +4,7 @@ Select and sort linguist listings.
 Functions:
 
     select_sort_criteria() -> str
-    sort_by_criterium(list, str) -> list of objects (sorted)
+    sort_by_criterion(list, str) -> list of objects (sorted)
     print_linguists(list, int) -> None
     print_sorted_linguists(list, int, str) -> None
     select_linguist(list) -> str
@@ -13,7 +13,7 @@ Functions:
 Variables:
     word_count
     listings
-    criterium
+    criterion
 """
 import operator
 
@@ -28,36 +28,36 @@ def select_sort_criteria():
     criteria = {'1': 'price', '2': 'turnaround',
                 '3': 'experience', '4': 'rating'}
     print("You can sort the listed linguists by:\n")
-    for criterium in criteria:
-        print(f"{criterium} - {criteria[criterium]}")
+    for criterion in criteria:
+        print(f"{criterion} - {criteria[criterion]}")
     print("\nTo choose sorting criteria, type their number.")
     print("Type 0 to move on without sorting.\n")
     while True:
         try:
-            criterium_selection = input(
+            criterion_selection = input(
                 'Choose number from 0 to 4: \n')
-            if criterium_selection != '0':
-                selected_criterium = criteria[criterium_selection]
-                print(f'\nLinguists sorted by: {selected_criterium.upper()}\n')
+            if criterion_selection != '0':
+                selected_criterion = criteria[criterion_selection]
+                print(f'\nLinguists sorted by: {selected_criterion.upper()}\n')
                 break
             else:
-                selected_criterium = '0'
+                selected_criterion = '0'
                 break
         except KeyError:
             print('\nInvalid selection.\
              \nPlease enter a number from 0 to 4\n')
-    return selected_criterium
+    return selected_criterion
 
 
-def sort_by_criterium(listings, criterium):
-    """Sort the list of objects passed as listings by selected criterium."""
-    if criterium != '0':
-        if criterium == 'price':
+def sort_by_criterion(listings, criterion):
+    """Sort the list of objects passed as listings by selected criterion."""
+    if criterion != '0':
+        if criterion == 'price':
             # Code taken from:
             # https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333
-            listings = listings.sort(key=operator.attrgetter(criterium))
+            listings = listings.sort(key=operator.attrgetter(criterion))
         else:
-            listings = listings.sort(key=operator.attrgetter(criterium),
+            listings = listings.sort(key=operator.attrgetter(criterion),
                                      reverse=True)
         return listings
     else:
@@ -70,13 +70,13 @@ def print_linguists(listings, word_count):
         print(f'\n{listings.index(value)+1} - {value.__str__(word_count)}')
 
 
-def print_sorted_linguists(listings, word_count, criterium):
+def print_sorted_linguists(listings, word_count, criterion):
     """
     Print lingusits from passed list after sorting.
 
     Checks for sorting criteria and prints only if selection is not 0 ('none').
     """
-    if criterium != '0':
+    if criterion != '0':
         print_linguists(listings, word_count)
 
 

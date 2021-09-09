@@ -22,8 +22,6 @@ def send_email_confimation(order_number, customer, message):
     try:
         # initializing the server connection
         yag = yagmail.SMTP(yagmail_creds.user, yagmail_creds.password)
-        # yag = yagmail.SMTP(yagmail_creds.user,
-        # oauth2_file="~/oauth2_creds.json")
         yag.send(to=customer,
                  subject=f"Order {order_number} - confirmation",
                  contents=message)

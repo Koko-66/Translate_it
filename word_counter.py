@@ -57,7 +57,7 @@ def return_word_count(text):
     Takes in text converted into a list of words that is passed as an argument
     and returns the length of the list as word count.
     """
-    print("\nCounting...")
+    print("\n\nCounting...")
     word_count = len(text)
     print(f"\n\nWord count: {word_count}\n")
     return word_count

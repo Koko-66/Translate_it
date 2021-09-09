@@ -24,7 +24,7 @@ Variables created and used in the main() function:
     selected_lang
     word_count
     listings
-    criterium
+    criterion
     selected_linguist
     order_number
     order
@@ -183,10 +183,10 @@ def main():
         word_count = word_counter.run_word_count()
         listings = return_linguists(selected_lang)
         linguist_selector.print_linguists(listings, word_count)
-        criterium = linguist_selector.select_sort_criteria()
-        linguist_selector.sort_by_criterium(listings, criterium)
+        criterion = linguist_selector.select_sort_criteria()
+        linguist_selector.sort_by_criterion(listings, criterion)
         linguist_selector.print_sorted_linguists(
-            listings, word_count, criterium)
+            listings, word_count, criterion)
         selected_linguist = linguist_selector.select_linguist(listings)
         print(selected_linguist.generate_quote(word_count))
         order_generator.confirm_order(listings, word_count)
