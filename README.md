@@ -47,7 +47,7 @@ The program takes the user through the process step by step, continuously provid
 #### Google Sheet database
 The program exchanges linguist and order data with a Google Sheet as a database (link to the database [here](https://docs.google.com/spreadsheets/d/14nIJVg9JECtkHeYSg42bjcTiKdKcvbqxtreLCXIFVU0/edit?usp=sharing). Language and Rating data in the Google Sheet is validated using its in-build validation features.
 The program retrieves the linguist and language data from the Google Sheet and pushes the order data back to the Order_data worksheet.
-_Note: _all_ _data_ _in_ _the_ _database_ _is_ _fictional._
+_Note: all data in the database is fictional._
 
 #### Language selection
 When run, the program prints a list of the available languages from the database and asks the customer to make a selection and confirm their choice, giving them an opportunity to correct their selection if they make a mistake.
@@ -98,7 +98,7 @@ The users have the opportunity to confirm their selection of language and the li
 
 ![Order not confirmed options](https://github.com/Koko-66/Translate_it/blob/main/data/order_not_confrimed_options.png)
 
-#### Validation of Data Input
+#### Validation of Data Input and handling errors
 At points requiring user input, the input data is appropriately validated. 
   1. Language selection and selection of the sorting criteria validates against the key value in the dictionary holding languages/criteria using the try/except method.
   2. Word counting function checks for lack of data i.e. the word count being equal to 0. 
@@ -106,6 +106,8 @@ At points requiring user input, the input data is appropriately validated.
   4. Functions asking to confirm selection validate for input equal to allowed values ('y' and 'n') using if statements.
   5. The value for the last order number present in the database is checked for correct value and returns 101 as the first number if no order is present.
   5. The format of the e-mail is validated with the use of Regex.
+  6. Connection to the Google Sheet is wrapped in a try/except to handle an error when accessing the database.
+  7. Similarly, the main function is wrapped in a try/except to handle EOF and KeyboardInterrupt errors.
 
 ### <a name="left-to-implement"></a>Features Left to Implement
 
