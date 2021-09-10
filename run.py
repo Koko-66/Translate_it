@@ -51,12 +51,17 @@ SCOPE = [
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('Database')
 
-linguists = SHEET.worksheet('Linguists')
-languages = SHEET.worksheet('Languages')
-order_data = SHEET.worksheet('Order_data')
-rating = SHEET.worksheet('Rating')
+try:
+    SHEET = GSPREAD_CLIENT.open('Database')
+    linguists = SHEET.worksheet('Linguists')
+    languages = SHEET.worksheet('Languages')
+    order_data = SHEET.worksheet('Order_data')
+    rating = SHEET.worksheet('Rating')
+except gspread.exceptions.SpreadsheetNotFound:
+    print("\nWe're sorry, an error has ocurred.")
+    print("Please contact support at translateit7@gmail.com\n")
+    quit()
 
 
 def print_welcome():
@@ -200,8 +205,8 @@ def main():
             customer, order, selected_lang, word_count, selected_linguist)
         confirmation_mailer.send_email_confimation(
             order.number, customer.email, message)
-    except EOFError:
-        print("Exiting program...\n")
+    except (EOFError, KeyboardInterrupt):
+        print("\nExiting program...\n")
         quit()
 
 
