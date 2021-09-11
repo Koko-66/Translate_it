@@ -123,13 +123,13 @@ def language_selector():
     while True:
         try:
             lang_selection = input(
-                f'\nChoose number from 1 to {lang_count}: ')
+                f"\nChoose number from 1 to {lang_count}: \n")
             selected_lang = lang_dict[lang_selection]
-            print(f'\nYour selection: {selected_lang}\n')
+            print(f"\nYour selection: {selected_lang}\n")
             break
         except KeyError:
-            print(f'\nInvalid selection.\
-            \nPlease enter a number from 1 to {lang_count}\n')
+            print(f"\nInvalid selection.\
+            \nPlease enter a number from 1 to {lang_count}\n")
     return selected_lang
 
 

@@ -44,7 +44,7 @@ def confirm_order(listings, word_count):
             print("\nOrder cancelled. What do you want to do?\n")
             while True:
                 selection = input(
-                    f"1 - {options.get('1')} or 2 - {options.get('2')}")
+                    f"1 - {options.get('1')} or 2 - {options.get('2')}\n")
                 if selection == "1":
                     criterion = linguist_selector.select_sort_criteria()
                     linguist_selector.sort_by_criterion(listings, criterion)
@@ -82,12 +82,12 @@ def get_customer_data():
     Get name and email from customer; validate e-mail's format.
     """
     print("\nPlease provide your details.")
-    name = input("\nYour name: ")
+    name = input("\nYour name: \n")
     # regex and code in the if statement taken from:
     # https://www.geeksforgeeks.org/check-if-email-address-valid-or-not-in-python/
     regex = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
     while True:
-        email = input("\nYour e-mail address: ")
+        email = input("\nYour e-mail address: \n")
         if re.fullmatch(regex, email):
             print("\nThank you! You will receive the \
 confirmation email shortly.\nIf you don't receive the \
