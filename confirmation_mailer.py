@@ -13,7 +13,13 @@ Variables:
             from order_generator module)
 """
 import yagmail
-import yagmail_creds
+# import yagmail_creds
+from boto.s3.connection import S3Connection
+import os
+
+
+account = S3Connection(os.environ['ACCOUNT'])
+password = S3Connection(os.environ['PASSWORD'])
 
 
 # code taken from https://mailtrap.io/blog/yagmail-tutorial/
@@ -21,7 +27,7 @@ def send_email_confimation(order_number, customer, message):
     """Send confirmation email."""
     try:
         # initializing the server connection
-        yag = yagmail.SMTP(yagmail_creds.user, yagmail_creds.password)
+        yag = yagmail.SMTP(account, password)
         yag.send(to=customer,
                  subject=f"Order {order_number} - confirmation",
                  contents=message)
