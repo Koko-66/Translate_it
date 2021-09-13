@@ -44,7 +44,7 @@ def get_user_input():
     try:
         while True:
             text.append(input())
-    except EOFError:
+    except (KeyboardInterrupt, EOFError):
         pass
     text = "\n".join(text)
     return text
