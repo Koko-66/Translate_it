@@ -12,14 +12,14 @@ Variables:
     message (created in run.py by create_order_confrimation_message() function
             from order_generator module)
 """
+# from boto.s3.connection import S3Connection
+import os
 import yagmail
 # import yagmail_creds
-from boto.s3.connection import S3Connection
-import os
 
 
-account = S3Connection(os.environ['ACCOUNT'])
-password = S3Connection(os.environ['PASSWORD'])
+account = os.environ['ACCOUNT']
+password = os.environ['PASSWORD']
 
 
 # code taken from https://mailtrap.io/blog/yagmail-tutorial/
