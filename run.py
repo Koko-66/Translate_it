@@ -31,13 +31,13 @@ Variables created and used in the main() function:
     customer
     message
 """
-import gspread
-from google.oauth2.service_account import Credentials
-import word_counter
-import linguist_selector
-import order_generator
 from classes.linguist import Linguist
 import confirmation_mailer
+from google.oauth2.service_account import Credentials
+import gspread
+import linguist_selector
+import order_generator
+import word_counter
 
 
 # Settings for setting up Google sheet are taken from the
