@@ -24,7 +24,7 @@ The program was tested at each step of the development within the development en
     Once the linguist is selected and confirmed, the user receives feedback on the screen and email with order details.
 9. I know at what stage in the process I am, what process is running in the background and can confirm my selections at different points.<br>
     Throughout the program, the user receives feedback on their input and the program's background activities, instructions on expected input and is asked to confirm their choices.
-10. The program runs smoothly, does not take too long and does not crash when my input is not correct.<br>
+10. I want the program to run smoothly, not take too long and not crash when my input is not correct.<br>
     Testing has shown that the program runs quickly and for the functions that might take a bit longer feedback message is printed informing about the background process. Various input validation methods are implemented throughout the program to handle exceptions and errors that might be caused by the user input.
   
 ## <a name="vlaidator-testing"></a>Validator testing 
@@ -39,49 +39,53 @@ Each feature was tested while being developed to ensure correct and error-free f
 Bugs encountered during the development and their fixes are listed below.
 
 1. In the *word_counter* module copy/pasting text that contains newline causes the shell to interpret the new line text as a new command rather than part of the text and preventing it from running correctly.<br>
-__FIXED__ Used method that creates a list to which pasted text is appended line by line and then converted to a string using join() method. Solution found on [Stackoverflow](https://stackoverflow.com/questions/34889012/how-to-paste-multiple-lines-of-text-into-python-input). This also allows the user to input multiple texts.
+__FIXED__: Used method that creates a list to which pasted text is appended line by line and then converted to a string using join() method. Solution found on [Stackoverflow](https://stackoverflow.com/questions/34889012/how-to-paste-multiple-lines-of-text-into-python-input). This also allows the user to input multiple texts.
 
 2. *word_counter* module runs input request before printing instructions, even if this function is called later. The same happens when imported module to the main *run.py* module, despite the input request function not being called in the module.<br>
-__FIXED__ Removed `@split_text` decorator, which was causing this issue, and used the function with `get_user_input()` as an argument instead.
+__FIXED__: Removed `@split_text` decorator, which was causing this issue, and used the function with `get_user_input()` as an argument instead.
 
 3. Creating a Linguist instance from Google Sheet data in the *linguist_selector* module requires importing sheet data from the main *run* module, causing circular import issues.<br>
-__FIXED__ Moved the function to the *run* module to avoid setting up the worksheet access in the *linguist_selector* module as well. All functions needing direct access to the data from the database are in the run.py for the same reason.
+__FIXED__: Moved the function to the *run* module to avoid setting up the worksheet access in the *linguist_selector* module as well. All functions needing direct access to the data from the database are in the run.py for the same reason.
 
 4. Initial idea of creating a dictionary with row number as key and the linguist instance returned as a string using the `__str__` method caused issues when applying the sorting function. In the sorting function, when sorted list assigned to another variable returned `None` object.<br>
-__FIXED__ Adjusted the program to return a list of objects (Linguists pulled in from the database based on their language attribute) instead of a dictionary, thus allowing the use of `operand.getattribute` to sort returned lists. 
+__FIXED__: Adjusted the program to return a list of objects (Linguists pulled in from the database based on their language attribute) instead of a dictionary, thus allowing the use of `operand.getattribute` to sort returned lists. 
 Adjusted `sort_by_criterion()` function to reassign the sorted list to the same variable as that passed in the function.
 
 5. The `generate_quote` linguist method, after selection of the linguist, raises an error due to incorrect data types.<br>
-__FIXED__ Converted class attributes to floats within the functions that calculate total price and turnaround time and changed the `return_word_count()` function in the *word_counter* module to return `word_count` variable, rather than a string of text. 
+__FIXED__: Converted class attributes to floats within the functions that calculate total price and turnaround time and changed the `return_word_count()` function in the *word_counter* module to return `word_count` variable, rather than a string of text. 
 
 6. The `select_linguist()` function in the *linguist_selector* module does not account for input that is not an integer and raises ValueError.<br>
-__FIXED__ Added ValueError to exception handling within the function.
+__FIXED__: Added ValueError to exception handling within the function.
 
 7. Removing '0 - none' from the criteria dictionary in the `select_sort_criteria()` function (*linguist_selector module*) to prevent the linguists listing from printing when 'none' is selected raises KeyError when the user inputs '0' since it is no longer in the dictionary.<br>
-__FIXED__ Added an if statement to the function to handle a case with '0' as input separately and adjusted `sort_by_criterion()` function to reflect the new input value. 
+__FIXED__: Added an if statement to the function to handle a case with '0' as input separately and adjusted `sort_by_criterion()` function to reflect the new input value. 
 
 8. In order to prevent the linguists' listings from re-printing when no sorting criterion is selected the `print_linguists()` function was moved out of the `main()` function in the  *run* module. When moved to the `select_sort_criterion()` function within the *linguist_selector* module, the listings that are printed are not sorted.<br>
-__FIXED__ Created a new function that checks for sorting criterion and prints sorted list only if the criterion is not equal to 'none' ('0').
+__FIXED__: Created a new function that checks for sorting criterion and prints sorted list only if the criterion is not equal to 'none' ('0').
 
 9. Sorting of the listings of the linguists sorts them from lower to higher irrespective of the criteria, since all are treated the same way.<br>
-__FIXED__ Added an if statement to the `sort_by_criterion()` function in the *linguitst_selector* module to handle specific sorting criteria and reversing sorting for those that require sorting from higher to lower.
+__FIXED__: Added an if statement to the `sort_by_criterion()` function in the *linguitst_selector* module to handle specific sorting criteria and reversing sorting for those that require sorting from higher to lower.
 
 10. Sorting the linguists by experience does not sort double-digit values correctly. Later in the development, the same issue becomes apparent when sorting by turnaround.<br>
-__FIXED__ Changed the `return_linguist()` function that builds an instance of a Linguist class in the *run* module to convert all numerical values pulled in from the database as numbers (integers and the price as float).
+__FIXED__: Changed the `return_linguist()` function that builds an instance of a Linguist class in the *run* module to convert all numerical values pulled in from the database as numbers (integers and the price as float).
 
 11. The use of `itertools` external library to create the order number does not work as expected, since restarting the program clears all instances of the class and resets the count to 0.<br>
-__FIXED__ Replaced with a function that grabs the last order number from the database instead and pushes a specified number (101) if there is no order number in the database yet.
+__FIXED__: Replaced with a function that grabs the last order number from the database instead and pushes a specified number (101) if there is no order number in the database yet.
 
-12. Attempted e-mail authentication using OAuth2, however simple configuration suggested in yagmail documentation does not work as expected. 
-__NOT FIXED__ Implementation of this feature requires more detailed research and implementation of a more complex code as instructed [here](https://blog.macuyiko.com/post/2016/how-to-send-html-mails-with-oauth2-and-gmail-in-python.html).
+12. Attempted e-mail authentication using OAuth2, however simple configuration suggested in yagmail documentation does not work as expected.<br>
+__NOT FIXED__: Implementation of this feature requires more detailed research and implementation of a more complex code as instructed [here](https://blog.macuyiko.com/post/2016/how-to-send-html-mails-with-oauth2-and-gmail-in-python.html).
 
 ## <a name="bugs-and-fixes"></a>Deployment Testing 
 Testing after deployment to Heroku revealed several issues.
 
-1. Came accross an issue when deploying to Heroku - the hidden module with credentials, since not pushed to git cannot be used in Heroku.
-__FIXED__ Set up account and password values as variables in Heroku as Config Vars and adjusted the `confirmation_mailer.py` module accordingly.
+1. The hidden module with credentials, since not pushed to git cannot be used in Heroku.<br>
+__FIXED__: Set up account and password values as Config Vars in Heroku and adjusted the code in `confirmation_mailer.py` module accordingly.
  
-2. After deploying to Heroku, `get_user_input()` function does not work - the keyboard shortcut does not force the EOF error and the program does not move forward. Tried adding KeyboardInterrupt but this does not solve the issue.
-__FIXED__ Changed function to check for user typing 'DONE' to finish input. Made input not case sensitive for ease of use, and changed instructions according to the new functionality. Adjusted word counting formula not to take into count the last typed string ('done').
+2. After deploying to Heroku, `get_user_input()` function does not work - the keyboard shortcut does not force the EOF error and the program does not move forward. Tried adding KeyboardInterrupt but this does not solve the issue.<br>
+__FIXED__: Changed function to check for users typing 'DONE' to indicate they are finished inputting data. 'DONE' is not case sensitive for ease of use. Changed instructions to reflect the change in the code and adjusted the word counting formula to reduce the word count by one, to exclude 'DONE', which is the last typed string.
 
-3. Total price in the printed listings is rounded to one instead of two decimal places when the last digit is '0'.
+3. The `total_price` in the printed listings is rounded to one instead of two decimal places when the last digit is '0'.<br>
+__FIXED__: Added number formatting to the calculation of the `total_price` in the `__str__` linguist method to print with 2 decimal places.
+
+4. Linguist selection recognises 0 and negative selection as a valid input, recognising it as index `[-1]`.<br>
+__FIXED__: Added an if statement to the `select_lingusit()` function in the `linguist_selector.py` to handle inputs that are 0 or lower.

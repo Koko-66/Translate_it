@@ -16,6 +16,8 @@
 ## <a name="intro"></a>Translate it!
 
 ![Responsive Mockup]()
+Deployed [here](https://translate-it7.herokuapp.com/)
+
 Translate it! is a translation service engine that allows the user to compare pricing, timings, rating and experience of linguists translating into their selected language. They can then select the linguist and place an order for translating their text.
 The service is easy to use but it is used mostly aimed at youth or adults, considering it involves a purchase.
 
@@ -37,7 +39,7 @@ As a user:
   7. I can sort the linguists depending on the selection criterion that is most important to me.
   8. I can place an order and receive confirmation on the screen and via e-mail that it has been placed. 
   9. I know what process is running in the background at all times and can confirm my selections at different points.
-  10. The program runs smoothly, does not take too long and does not crash when my input is not correct.
+  10. I want the program to run smoothly, not take too long and not crash when my input is not correct.
 
 ## <a name="features-design"></a>Features and Design
 The program takes the user through the process step by step, continuously providing feedback and asking for confirmation of choices made.
@@ -80,7 +82,7 @@ Here is an example of listings sorted by Experience:
 The user can also re-sort the linguists according to a different criterion if they choose not to confirm the order and want to select the linguist once again.
 
 #### Order generation and e-mail confirmation 
-Once the user selects their lingusit, they are presented with the quote:
+Once the user selects their linguist, they are presented with the quote:
 
 ![Quote](https://github.com/Koko-66/Translate_it/blob/main/data/quote.png)
 
@@ -89,7 +91,7 @@ Once the user confirms their selection, they are asked for their name and e-mail
 ![Customer information](https://github.com/Koko-66/Translate_it/blob/main/data/customer_data_input.png)
 
 The order number is generated based on the last order number in the Google Sheet. If no number is present, a preset number is used instead.
-The order and user information is then pushed into the database, and the order confirmation is sent from a dedicated e-mail account to user's the indicated e-mail address. The E-mail address is validated for correct format only.
+The order and user information are then pushed into the database, and the order confirmation is sent from a dedicated e-mail account to user's the indicated e-mail address. The E-mail address is validated for correct format only.
 
 ![Sample email](https://github.com/Koko-66/Translate_it/blob/main/data/email_confirmation.png)
 
@@ -150,12 +152,15 @@ Information about testing is available in a separate file [here](https://github.
 - The program was deployed to Heroku and is available here: The steps to deploy are as follows: 
 
 1. Updated the contents of the requirements file using the `pip3 freeze > requirements.txt` command in VS Code.
-3. Checked the project structure and run the program to ensure all is working as expected.
-4. Created the Translate it! project on Heroku, giving it a name 'translate-it7' (translate-it was available).
-5. In the sections tab, set enviornment variables in the Config Vars section for accessing the Google Sheet, set port and credentials for e-mail account.
-6. Added python and nodejs buildpacks.
-7. In the Deployment tab, selected GitHub as deployement method, selected Connect, authorised Heroku to access the GitHub account, searched for Translate_it repository and connected to it.
-8. First time, deployed the app using Deploy Branch button and then enabled automatic deploys.
+2. Checked the project structure and run the program to ensure all is working as expected.
+3. Created the Translate it! project on Heroku, giving it the name 'translate-it7' (translate-it was not available).
+4. In the Settings tab set the environment variables in the Config Vars section to set up credentials to access the Google Sheet with the database, set port and credentials to access e-mail account for sending e-mails.
+5. Added the python and nodejs buildpacks (in that order).
+6. In the Deployment tab selected GitHub as deployment method, selected Connect, authorised Heroku to access the GitHub account, searched for Translate_it repository and connected to it.
+7. First time deployed the app using the manual Deploy Branch button and then enabled automatic deploys.
+8. After deployment tested app functionality and resolved encountered issues.
+
+The app has been deployed to: https://translate-it7.herokuapp.com/
  
 ## Requirements
 The program requires Python 3 or higher. 
@@ -166,7 +171,7 @@ A great thank you to:
 
 - Stackoverflow, its users and their previous posts to help me find solutions to problems I encountered and specifically Ned Batchelder for his suggestion on how to sort linguists listings according to a specific attribute available [here](https://stackoverflow.com/questions/4010322/sort-a-list-of-class-instances-python#comment4297852_4010333) and operator module's [official documentation](https://docs.python.org/3/library/operator.html) for information on how to apply it.
 
-- [Python Examples](https://pythonexamples.org/python-split-string-by-regex/) for tips on how to use regex for spliting the content.
+- [Python Examples](https://pythonexamples.org/python-split-string-by-regex/) for tips on how to use regex for splitting the content.
 
 - [W3 schools](https://www.w3schools.com) for tips on the usage of various in-built functions and methods.
 
