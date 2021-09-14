@@ -74,3 +74,14 @@ __FIXED__ Replaced with a function that grabs the last order number from the dat
 
 12. Attempted e-mail authentication using OAuth2, however simple configuration suggested in yagmail documentation does not work as expected. 
 __NOT FIXED__ Implementation of this feature requires more detailed research and implementation of a more complex code as instructed [here](https://blog.macuyiko.com/post/2016/how-to-send-html-mails-with-oauth2-and-gmail-in-python.html).
+
+## <a name="bugs-and-fixes"></a>Deployment Testing 
+Testing after deployment to Heroku revealed several issues.
+
+1. Came accross an issue when deploying to Heroku - the hidden module with credentials, since not pushed to git cannot be used in Heroku.
+__FIXED__ Set up account and password values as variables in Heroku as Config Vars and adjusted the `confirmation_mailer.py` module accordingly.
+ 
+2. After deploying to Heroku, `get_user_input()` function does not work - the keyboard shortcut does not force the EOF error and the program does not move forward. Tried adding KeyboardInterrupt but this does not solve the issue.
+__FIXED__ Changed function to check for user typing 'DONE' to finish input. Made input not case sensitive for ease of use, and changed instructions according to the new functionality. Adjusted word counting formula not to take into count the last typed string ('done').
+
+3. Total price in the printed listings is rounded to one instead of two decimal places when the last digit is '0'.
