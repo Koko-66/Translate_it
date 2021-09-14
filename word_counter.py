@@ -41,18 +41,11 @@ def get_user_input():
     # Code below taken from:
     # https://stackoverflow.com/questions/34889012/how-to-paste-multiple-lines-of-text-into-python-input
     text = []
-
     while True:
         text.append(input())
-
         if text[-1].lower() == 'done':
             print('Thank you!')
             break
-    # try:
-    #     while True:
-    #         text.append(input())
-    # except (KeyboardInterrupt, EOFError):
-    #     pass
     text = "\n".join(text)
     return text
 
@@ -85,4 +78,3 @@ def run_word_count():
             print("Please provide text to translate.")
         else:
             return word_count
-
