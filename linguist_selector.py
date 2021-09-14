@@ -91,8 +91,12 @@ def select_linguist(listings):
         try:
             linguist_selection = int(input(
                 "\nTo choose the linguist select their number.\n"))
-            selected_linguist = listings[linguist_selection-1]
-            return selected_linguist
+            if linguist_selection > 0:
+                selected_linguist = listings[linguist_selection-1]
+                return selected_linguist
+            else:
+                print(f'\nInvalid selection.\
+                \nPlease enter a number from 1 to {counter}\n')
         except (IndexError, ValueError):
             print(f'\nInvalid selection.\
             \nPlease enter a number from 1 to {counter}\n')
