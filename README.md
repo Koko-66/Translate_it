@@ -149,10 +149,16 @@ Information about testing is available in a separate file [here](https://github.
 ## <a name="deployment">Deployment
 - The program was deployed to Heroku and is available here: The steps to deploy are as follows: 
 
-
+1. Updated the contents of the requirements file using the `pip3 freeze > requirements.txt` command in VS Code.
+3. Checked the project structure and run the program to ensure all is working as expected.
+4. Created the Translate it! project on Heroku, giving it a name 'translate-it7' (translate-it was available).
+5. In the sections tab, set enviornment variables in the Config Vars section for accessing the Google Sheet, set port and credentials for e-mail account.
+6. Added python and nodejs buildpacks.
+7. In the Deployment tab, selected GitHub as deployement method, selected Connect, authorised Heroku to access the GitHub account, searched for Translate_it repository and connected to it.
+8. First time, deployed the app using Deploy Branch button and then enabled automatic deploys.
  
 ## Requirements
-The program requires Python 3 and higher. 
+The program requires Python 3 or higher. 
 
 ## <a name="credits">Credits 
 A great thank you to: 
@@ -165,7 +171,9 @@ A great thank you to:
 - [W3 schools](https://www.w3schools.com) for tips on the usage of various in-built functions and methods.
 
 - [Geeks for Geeks](https://www.geeksforgeeks.org/check-if-email-address-valid-or-not-in-python/) for code for e-mail validation using Regex.
-<!-- - https://stackoverflow.com/questions/37201250/sending-email-via-gmail-python) for tips on how to apply Auth2 with- -->
+
 - [Programiz](https://www.programiz.com/python-programming/docstrings) for notes on how to write docstrings for modules and classes.
+
+- Creators of Python and Heroku documentation.
 
 Content of the css, xterm.css and xterm.js provided with the Code Institute template, originally forked from [Fabrice Bellard's javascript vt100 for jslinux](http://bellard.org/jslinux/)
