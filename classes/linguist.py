@@ -57,7 +57,7 @@ class Linguist:
         Takes word_count as parameter to calculates total_price and
         turnaround time.
         """
-        total_price = self.calculate_total_price(word_count)
+        total_price = "{:.2f}".format(self.calculate_total_price(word_count))
         turnaround_time = self.calculate_turnaround_time(word_count)
         return ' ** '.join((f"ID {self.no}: {self.name} - {self.language}",
                             f"\n{' '*7}Experience: {self.experience} years",
@@ -70,7 +70,7 @@ class Linguist:
     def calculate_total_price(self, word_count):
         """Return total price for the word count."""
 
-        total_price = round(word_count * float(self.price), 3)
+        total_price = round(word_count * float(self.price), 2)
         return total_price
 
     def turnaround_time_as_float(self, word_count):
