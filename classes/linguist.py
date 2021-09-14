@@ -65,7 +65,7 @@ class Linguist:
                             f"\n\n{' '*7}Price/word: {self.price}",
                             f"Total: ${total_price}",
                             f"\n{' '*7}Turnaround time: ca {turnaround_time}",
-                            f"\n{'_'*50}\n"))
+                            f"\n{'_'*50}"))
 
     def calculate_total_price(self, word_count):
         """Return total price for the word count."""
