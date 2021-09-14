@@ -21,7 +21,7 @@ def print_instructions():
     """Print instructions for the user on how to copy text."""
     instructions = """Copy and paste your file here (Cmd+V on Linux/Mac
 or Ctrl+V on Windows). You can paste in multiple lines of text.
-Once you're finished, type in 'DONE'.\n"""
+Once you're finished, hit Enter and type in 'DONE'.\n"""
     print(instructions)
 
 
@@ -58,7 +58,7 @@ def return_word_count(text):
     and returns the length of the list as word count.
     """
     print("\n\nCounting...")
-    word_count = len(text)
+    word_count = len(text)-1
     print(f"\n\nWord count: {word_count}\n")
     return word_count
 
