@@ -90,7 +90,7 @@ Once the user selects their linguist, they are presented with the quote:
 
 Once the user confirms their selection, they are asked for their name and e-mail address.
 
-![Customer information](https://github.com/Koko-66/Translate_it/blob/main/data/depl-user-details-with-email-verification.png)
+![Customer information](https://github.com/Koko-66/Translate_it/blob/main/data/depl-user-details-input.png)
 
 The order number is generated based on the last order number in the Google Sheet. If no number is present, a preset number is used instead.
 The order and user information are then pushed into the database, and the order confirmation is sent from a dedicated e-mail account to user's the indicated e-mail address. The E-mail address is validated for correct format only.
@@ -121,7 +121,8 @@ At points requiring user input, the input data is appropriately validated.
   ![Confirm selection](https://github.com/Koko-66/Translate_it/blob/main/data/depl-confirm-lang-selection.png)
 
   5. The value for the last order number present in the database is checked for correct value and returns 101 as the first number if no order is present.
-  5. The format of the e-mail is validated with the use of Regex. Validation when working is shown in the screnshot showing user detail entires above.
+  5. The format of the e-mail is validated with the use of Regex. 
+  ![Customer e-mail validation](https://github.com/Koko-66/Translate_it/blob/main/data/depl-email-validation.png)
   6. Connection to the Google Sheet is wrapped in a try/except to handle an error when accessing the database.
   7. Similarly, the main function is wrapped in a try/except to handle EOF and KeyboardInterrupt errors.
 
