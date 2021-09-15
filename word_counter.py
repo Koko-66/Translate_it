@@ -44,7 +44,6 @@ def get_user_input():
     while True:
         text.append(input())
         if text[-1].lower() == 'done':
-            print('Thank you!')
             break
     text = "\n".join(text)
     return text
@@ -57,7 +56,7 @@ def return_word_count(text):
     Takes in text converted into a list of words that is passed as an argument
     and returns the length of the list as word count.
     """
-    print("\n\nCounting...")
+    print("\n\nThank you!\nCounting...")
     word_count = len(text)-1
     print(f"\n\nWord count: {word_count}\n")
     return word_count
