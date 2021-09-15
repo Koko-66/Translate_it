@@ -15,8 +15,8 @@
 
 ## <a name="intro"></a>Translate it!
 
-![Responsive Mockup]()
-Deployed [here](https://translate-it7.herokuapp.com/)
+![Responsive Mockup](https://github.com/Koko-66/Translate_it/blob/main/data/am-i-responsive.png)
+The app is deployed [here](https://translate-it7.herokuapp.com/)
 
 Translate it! is a translation service engine that allows the user to compare pricing, timings, rating and experience of linguists translating into their selected language. They can then select the linguist and place an order for translating their text.
 The service is easy to use but it is used mostly aimed at youth or adults, considering it involves a purchase.
@@ -49,19 +49,21 @@ The program takes the user through the process step by step, continuously provid
 #### Google Sheet database
 The program exchanges linguist and order data with a Google Sheet as a database (link to the database [here](https://docs.google.com/spreadsheets/d/14nIJVg9JECtkHeYSg42bjcTiKdKcvbqxtreLCXIFVU0/edit?usp=sharing). Language and Rating data in the Google Sheet is validated using its in-build validation features.
 The program retrieves the linguist and language data from the Google Sheet and pushes the order data back to the Order_data worksheet.
-_Note: all data in the database is fictional._
+_Note: all data in the database is fictional though realistic._
 
 #### Language selection
-When run, the program prints a list of the available languages from the database and asks the customer to make a selection and confirm their choice, giving them an opportunity to correct their selection if they make a mistake.
+When run, the program prints introduction to Translate it and a list of the available languages pulled from the database, and asks the customer to make a selection. Once the selection is made they are asked to confirm their choice, and are given an opportunity to correct their selection if they made a mistake.
 
-![Language selection](https://github.com/Koko-66/Translate_it/blob/main/data/language_selection.png)
+![Language selection](https://github.com/Koko-66/Translate_it/blob/main/data/depl-intro-and-languages.png)
+![Language selection confirmation](https://github.com/Koko-66/Translate_it/blob/main/data/depl-confirm-lang-selection.png)
 
 _Note: During the development, the representation of the language in the Google Sheet database was changed to be in one cell rather than separate. Considering the size of the database and the list of available languages, this seemed a more efficient solution, removing the need to join and split the language/locale combination to retrieve and manipulate data._
 
 #### Word counter
 The program allows the customer to paste the text into the program directly and performs a word count later used to calculate costs for translation depending on the linguist's price. The user can paste in multiple lines or pieces of texts until they indicate they are ready but entering a specified combination of keys.
 
-![Word count](https://github.com/Koko-66/Translate_it/blob/main/data/text_input_word_count.png)
+![Text input](https://github.com/Koko-66/Translate_it/blob/main/data/depl-text-input.png)
+![Word count](https://github.com/Koko-66/Translate_it/blob/main/data/depl-word-counter.png)
 
 #### Calculation of the total price and approximate turnaround time
 The program calculates the total price for the project depending on the per word price for each linguist, as well as the time needed to complete the translation that is based on the number of words the linguist is able to translate a day. The minimum turnaround time is set to 1 day, to be more realistic.
@@ -73,22 +75,22 @@ The program first prints a list of linguists available for the selected language
   - for experience and rating: from highest to lowest.
 If no sorting is selected, the program moves to the next step.
 
-![Linguists listing](https://github.com/Koko-66/Translate_it/blob/main/data/First_listing_sort_options.png)
+![Linguists listing](https://github.com/Koko-66/Translate_it/blob/main/data/depl-inital-linguist-listings.png)
 
-Here is an example of listings sorted by Experience:
+Here is an example of listings sorted by Price:
 
-![Linguists_sorted](https://github.com/Koko-66/Translate_it/blob/main/data/linguists_sorted.png)
+![Linguists_sorted](https://github.com/Koko-66/Translate_it/blob/main/data/depl-linguists-sorted-price.png)
 
 The user can also re-sort the linguists according to a different criterion if they choose not to confirm the order and want to select the linguist once again.
 
 #### Order generation and e-mail confirmation 
 Once the user selects their linguist, they are presented with the quote:
 
-![Quote](https://github.com/Koko-66/Translate_it/blob/main/data/quote.png)
+![Quote](https://github.com/Koko-66/Translate_it/blob/main/data/depl-quote.png)
 
 Once the user confirms their selection, they are asked for their name and e-mail address.
 
-![Customer information](https://github.com/Koko-66/Translate_it/blob/main/data/customer_data_input.png)
+![Customer information](https://github.com/Koko-66/Translate_it/blob/main/data/depl-user-details-with-email-verification.png)
 
 The order number is generated based on the last order number in the Google Sheet. If no number is present, a preset number is used instead.
 The order and user information are then pushed into the database, and the order confirmation is sent from a dedicated e-mail account to user's the indicated e-mail address. The E-mail address is validated for correct format only.
@@ -98,16 +100,28 @@ The order and user information are then pushed into the database, and the order 
 #### Confirmation of selections / ability to change selection
 The users have the opportunity to confirm their selection of language and the linguist and change it if needed. Similarly, the user is asked to confirm their order and if "no" is selected the user is given an option to either go back to the selection of linguist and their sorting or can exit the program.
 
-![Order not confirmed options](https://github.com/Koko-66/Translate_it/blob/main/data/order_not_confrimed_options.png)
+![Order not confirmed options](https://github.com/Koko-66/Translate_it/blob/main/data/depl-cancel-order-and-exit.png)
 
 #### Validation of Data Input and handling errors
 At points requiring user input, the input data is appropriately validated. 
   1. Language selection and selection of the sorting criteria validates against the key value in the dictionary holding languages/criteria using the try/except method.
+
+  ![Language selection validation](https://github.com/Koko-66/Translate_it/blob/main/data/depl-language-selection-vlidation.png)
+
   2. Word counting function checks for lack of data i.e. the word count being equal to 0. 
+
+  ![Word count validation](https://github.com/Koko-66/Translate_it/blob/main/data/depl-word-count-validation.png)
+
   3. Selection of linguists checks for value and index errors to ensure the user inputs correct value using the try/except method.
+
+  ![Linguist selection validation](https://github.com/Koko-66/Translate_it/blob/main/data/depl-linguist-selection-validation.png)
+
   4. Functions asking to confirm selection validate for input equal to allowed values ('y' and 'n') using if statements.
+
+  ![Confirm selection](https://github.com/Koko-66/Translate_it/blob/main/data/depl-confirm-lang-selection.png)
+
   5. The value for the last order number present in the database is checked for correct value and returns 101 as the first number if no order is present.
-  5. The format of the e-mail is validated with the use of Regex.
+  5. The format of the e-mail is validated with the use of Regex. Validation when working is shown in the screnshot showing user detail entires above.
   6. Connection to the Google Sheet is wrapped in a try/except to handle an error when accessing the database.
   7. Similarly, the main function is wrapped in a try/except to handle EOF and KeyboardInterrupt errors.
 
