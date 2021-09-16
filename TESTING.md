@@ -1,7 +1,7 @@
 # TESTING
 The program was tested at each step of the development within the development environment as well as on Heroku after deployment. The testing process included:
 1. [User Stories testing](#user-stories-testing)
-2. [Validation testing](#validation-testing)
+2. [Validator testing](#validator-testing)
 3. [Performance testing](#performance-testing)
 4. [Development testing](#bugs-and-fixes)
 5. [Deployment testing](#deployement-testing)
@@ -90,3 +90,5 @@ __FIXED__: Added number formatting to the calculation of the `total_price` in th
 
 4. Linguist selection recognises 0 and negative selection as a valid input, treating it as index `[-1] [-2]` etc.<br>
 __FIXED__: Added an if statement to the `select_lingusit()` function in the *linguist_selector* module to handle inputs that are 0 or lower.
+
+Back to [README](https://github.com/Koko-66/Translate_it/blob/main/README.md)
