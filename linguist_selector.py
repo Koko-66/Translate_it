@@ -2,7 +2,7 @@
 Select and sort linguist listings.
 
 Functions:
-
+~~~~~~~~~
     select_sort_criteria() -> str
     sort_by_criterion(list, str) -> list of objects (sorted)
     print_linguists(list, int) -> None
@@ -11,6 +11,7 @@ Functions:
 
 
 Variables:
+~~~~~~~~~
     word_count
     listings
     criterion

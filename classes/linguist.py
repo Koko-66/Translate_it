@@ -11,7 +11,6 @@ class Linguist:
 
     Attributes:
     ~~~~~~~~~~
-
     no: str (linguists id)
     name: str (linguists full name)
     language: str (linguist's working language)
@@ -22,7 +21,6 @@ class Linguist:
 
     Methods:
     ~~~~~~~
-
     calculate_total_price(float):
             Return total price for the provided text as float.
     turnaround_time_as_float(int):

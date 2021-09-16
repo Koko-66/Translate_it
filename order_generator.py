@@ -67,9 +67,7 @@ def confirm_order(listings, word_count):
 
 
 def create_order(number, linguist, word_count):
-    """
-    Create an instance of Order.
-    """
+    """Create an instance of Order."""
     total_value = linguist.calculate_total_price(word_count)
     turnaround_time = linguist.calculate_turnaround_time(word_count)
     order = Order(number, total_value, turnaround_time)
@@ -78,9 +76,7 @@ def create_order(number, linguist, word_count):
 
 
 def get_customer_data():
-    """
-    Get name and email from customer; validate e-mail's format.
-    """
+    """Get name and email from customer; validate e-mail's format."""
     print("\nPlease provide your details.")
     name = input("\nYour name: \n")
     # regex and code in the if statement taken from:
@@ -101,9 +97,7 @@ e-mail contact support team at:\
 
 
 def push_order_to_database(order, worksheet, language, word_count, customer):
-    """
-    Push order data back to the database.
-    """
+    """Push order data back to the database."""
     data = [order.number, str(order.date), language, word_count,
             order.total_value, customer.name, customer.email]
     worksheet.append_row(data)
@@ -111,9 +105,7 @@ def push_order_to_database(order, worksheet, language, word_count, customer):
 
 def create_order_confrimation_message(customer, order, language,
                                       word_count, linguist):
-    """
-    Create message with order details to send to customer via email.
-    """
+    """Create message with order details to send to customer via email."""
     turnaround_time = linguist.calculate_turnaround_time(word_count)
     message = "\n".join((f"Hello {customer.name},\n",
                          "Thank you for your order! "

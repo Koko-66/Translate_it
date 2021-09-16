@@ -19,6 +19,7 @@ class Order:
     # https://stackoverflow.com/questions/1045344/how-do-you-create-an-incremental-id-in-a-python-class
 
     def __init__(self, number, total_value, turnaround_time):
+        """Construct the order object."""
         self.number = number
         self.date = date.today()
         self.total_value = total_value
