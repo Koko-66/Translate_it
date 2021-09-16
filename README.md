@@ -16,6 +16,7 @@
 ## <a name="intro"></a>Translate it!
 
 ![Responsive Mockup](https://github.com/Koko-66/Translate_it/blob/main/data/am-i-responsive.png)
+
 Link to the deployed app: https://translate-it7.herokuapp.com/
 
 Translate it! is a translation service engine that allows users compare pricing, timings, rating and experience of linguists translating into their selected language. The users can select the linguist that suits them best, copy-paste text to get the word count, and place an order for its translation.
@@ -47,7 +48,7 @@ The program takes the user through the process step by step, continuously provid
 ### <a name="existing-features"></a>Existing Features
 
 #### Google Sheet database
-The program exchanges linguist and order data with a Google Sheet acting as a database ([database link](https://docs.google.com/spreadsheets/d/14nIJVg9JECtkHeYSg42bjcTiKdKcvbqxtreLCXIFVU0/edit?usp=sharing). Language and Rating data in the Google Sheet are validated using its in-build validation features.
+The program exchanges linguist and order data with a Google Sheet acting as a database ([database link](https://docs.google.com/spreadsheets/d/14nIJVg9JECtkHeYSg42bjcTiKdKcvbqxtreLCXIFVU0/edit?usp=sharing)). Language and Rating data in the Google Sheet are validated using its in-build validation features.
 The program retrieves the linguist and language data from the database and pushes the order data back to the Order_data worksheet.
 
 _Note: all data in the database is fictional although realistic._
