@@ -26,7 +26,7 @@ Considering the program is written using only Python, the UX is restricted to th
 In terms of the visual aspects, the instructions and on-screen feedback are arranged in a way that makes them easier to read and is as aesthetically pleasing as possible. This is achieved with the use of new lines and characters such as underscores and dashes.
 
 ### Functionality design
-The functionality of the program was initially designed using a process flowchart (available [here](https://github.com/Koko-66/Translate_it/blob/main/data/Translate_it!_flow-chart.pdf) and a graphical representation of the data model (available [here](https://github.com/Koko-66/Translate_it/blob/main/data/Translate_it!_data-model.pdf).
+The functionality of the program was initially designed using a process flowchart (available [here](https://github.com/Koko-66/Translate_it/blob/main/data/Translate_it!_flow-chart.pdf)) and a graphical representation of the data model (available [here](https://github.com/Koko-66/Translate_it/blob/main/data/Translate_it!_data-model.pdf)).
 
 ### <a name="user-story"></a>User Story
 As a user:
