@@ -16,7 +16,7 @@
 ## <a name="intro"></a>Translate it!
 
 ![Responsive Mockup](https://github.com/Koko-66/Translate_it/blob/main/data/am-i-responsive.png)
-The app is deployed [here](https://translate-it7.herokuapp.com/)
+Link to the deployed app: https://translate-it7.herokuapp.com/
 
 Translate it! is a translation service engine that allows the user to compare pricing, timings, rating and experience of linguists translating into their selected language. They can then select the linguist and place an order for translating their text.
 The service is easy to use but it is used mostly aimed at youth or adults, considering it involves a purchase.
@@ -47,12 +47,12 @@ The program takes the user through the process step by step, continuously provid
 ### <a name="existing-features"></a>Existing Features
 
 #### Google Sheet database
-The program exchanges linguist and order data with a Google Sheet as a database (link to the database [here](https://docs.google.com/spreadsheets/d/14nIJVg9JECtkHeYSg42bjcTiKdKcvbqxtreLCXIFVU0/edit?usp=sharing). Language and Rating data in the Google Sheet is validated using its in-build validation features.
+The program exchanges linguist and order data with a Google Sheet acting as a database ([database link](https://docs.google.com/spreadsheets/d/14nIJVg9JECtkHeYSg42bjcTiKdKcvbqxtreLCXIFVU0/edit?usp=sharing). Language and Rating data in the Google Sheet are validated using its in-build validation features.
 The program retrieves the linguist and language data from the Google Sheet and pushes the order data back to the Order_data worksheet.
 _Note: all data in the database is fictional though realistic._
 
 #### Language selection
-When run, the program prints introduction to Translate it and a list of the available languages pulled from the database, and asks the customer to make a selection. Once the selection is made they are asked to confirm their choice, and are given an opportunity to correct their selection if they made a mistake.
+When run, the program prints introduction to Translate it and a list of the available languages pulled from the database and asks the customer to make a selection. Once the selection is made they are asked to confirm their choice and are given an opportunity to correct their selection if they made a mistake.
 
 ![Language selection](https://github.com/Koko-66/Translate_it/blob/main/data/depl-intro-and-languages.png)
 ![Language selection confirmation](https://github.com/Koko-66/Translate_it/blob/main/data/depl-confirm-lang-selection.png)
@@ -118,12 +118,19 @@ At points requiring user input, the input data is appropriately validated.
 
   4. Functions asking to confirm selection validate for input equal to allowed values ('y' and 'n') using if statements.
 
-  ![Confirm selection](https://github.com/Koko-66/Translate_it/blob/main/data/depl-confirm-lang-selection.png)
+  ![Confirm selection](https://github.com/Koko-66/Translate_it/blob/main/data/depl-confirm-selection-validation.png)
 
   5. The value for the last order number present in the database is checked for correct value and returns 101 as the first number if no order is present.
-  5. The format of the e-mail is validated with the use of Regex. 
+  5. The format of the e-mail is validated with the use of Regex.
+
   ![Customer e-mail validation](https://github.com/Koko-66/Translate_it/blob/main/data/depl-email-validation.png)
-  6. Connection to the Google Sheet is wrapped in a try/except to handle an error when accessing the database.
+
+  To account for situations where the e-mail address provided is not correct, the program includes a message instructing the user to contact support at translateit7@gmail.com in case they don't receive a confirmation e-mail.
+
+  6. Connection to the Google Sheet is wrapped in a try/except to handle errors when accessing the database. This way, if the link to the database is broken, a message appears.
+
+  ![Error connecting to the database](https://github.com/Koko-66/Translate_it/blob/main/data/depl-error-connecting-to-database.png)
+
   7. Similarly, the main function is wrapped in a try/except to handle EOF and KeyboardInterrupt errors.
 
 ### <a name="left-to-implement"></a>Features Left to Implement
@@ -136,6 +143,7 @@ Implementation of a more secure way of accessing the e-mail using OAuth2 credent
 
 #### E-mail address validation
 In the future, a more thorough validation of the e-mail address, confirming that the e-mail is not only formatted correctly but is correct and exists, could be implemented.
+
 
 ## <a name="technologies"></a>Technologies used
 ### <a name="languages"></a>Languages
